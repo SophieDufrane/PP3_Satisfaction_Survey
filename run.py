@@ -29,6 +29,25 @@ menu_options = [
     MainMenuOptions(3, "Exit Program")
 ]
 
+# Dictionary with Question as key and list of answers as values
+question_options = {
+    "How satisfied are you with your current job role?":[
+        "Very Satisfied",
+        "Satisfied",
+        "Neutral",
+        "Dissatisfied",
+        "Very Dissatisfied"
+    ],
+    "How would you rate the work environment at our company?":[
+        "Excellent",
+        "Good",
+        "Average",
+        "Poor",
+        "Very Poor",
+    ]
+}
+
+
 def display_main_menu():
     """
     Display the Main Menu and program options.
@@ -72,9 +91,21 @@ def validate_user_choice():
             print(f"{e}, please try again: ")
 
 def access_survey():
+    """
+    Display the survey and get the user's answers.
+    Store the responses in a dictionary
+    """
     print("." * 50)
     print("     Welcome to Employees Satisfaction Survey")
     print("." * 50)
+
+    user_responses = {}
+
+    for question, answers in question_options.items():
+        print(f"\n {question}")
+        for answer in answers:
+            print(f"- {answer}")
+
 
 def analysis_program():
     print(">" * 50)
