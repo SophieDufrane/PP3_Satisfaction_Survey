@@ -16,6 +16,10 @@ survey = SHEET.worksheet('survey_result')
 data = survey.get_all_values()
 
 def display_main_menu():
+    """
+    Display the Main Menu and program options.
+    Prompt the user to select an option.
+    """
     print("=" * 50)
     print("               WELCOME TO MOODTRACKER")
     print("=" * 50)
@@ -24,7 +28,24 @@ def display_main_menu():
     print("2 - Access to Analysis Program")
     print("3 - Exit Program")
 
-    choice = input("\nEnter your choice (1-3): ")
-    return choice
+    validate_user_choice()
+
+def validate_user_choice():
+    """
+    Validate the input from user.
+    """
+    try:
+        choice = input("\nEnter your choice (1-3): ")
+        if choice == "1":
+            print("Accessing Moodtracker Survey...")
+        elif choice == "2":
+            print("Accessing Analysis Program...")
+        elif choice == "3":
+            print("Exiting Program...")
+        else:
+            raise ValueError("Invalid selection.")
+    
+    except ValueError as e:
+        print(f"{e}, please try again: ")
 
 display_main_menu()
