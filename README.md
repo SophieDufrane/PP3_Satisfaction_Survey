@@ -1,32 +1,75 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Moodtracker - Check your employees Satisfaction and improve your business culture
 
-Welcome,
+The [Moodtracker](https://sophiedufrane.github.io/PP2_Rock_Paper_Scissors_Lizard_Spock_Game/) is a tool that provides people from HR.......
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+'As a [persona role], I want to [perform some task] so that I can [achieve some goal]'. 
 
-## Reminders
+![Responsive Mockup](assets/media/rock_paper_scissors_mockup.png)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## Features:
 
-## Creating the Heroku app
+Intro
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Here the key features:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### Existing Features:
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+- **Feature 1**
+  - lalalala.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+  ![Feature1](assets/media/rock_paper_scissors_header.png)
 
-Connect your GitHub repository and deploy as normal.
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+### Features left to implement:
 
----
+- **To be implemented**
+  - lalala.
 
-Happy coding!
+
+### Bugs, Fixes
+
+- **Bug 1**: lalala.
+
+- **Bug 2**: lalala.
+
+
+## Testing:
+
+- **Wire API and Google sheet TEST**
+    - Expected: the command line is expected to retrieve the data from the worksheet when running the program.
+    - Testing: tested the program by running run.py in the terminal.
+    - Result: the feature responded as expected and displayed the data from the worksheet survey_result
+
+for manual test cases: Expected - Feature is expected to do X when the user does Y. Testing - Tested the feature by doing Y. Result - The feature responded as expected and did X, OR, The feature did not respond due to Z. Fix - A solution was found by ABC.
+
+### Feature Functionality Testing
+
+- **Accessibility and Browser Compatibility**: Tested in the following browsers:
+  - Google Chrome
+  - Microsoft Edge
+  - Mozilla Firefox
+
+- **Testing**: lalala.
+
+
+### Validator Testing
+
+- **HTML**: No errors were found when passing the code through the [W3C Validator](https://validator.w3.org/).
+
+
+### Deployment Steps
+
+The site was deployed to Heroku following the steps below:
+
+1. Step 1.
+2. Step 2.
+
+
+The live link can be found here: [Moodtracker](https://sophiedufrane.github.io/PP2_Rock_Paper_Scissors_Lizard_Spock_Game/)
+
+### Content
+
+- Inspiration: Workhuman Moodtracker
+  
+### Media
