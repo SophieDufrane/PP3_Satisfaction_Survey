@@ -33,19 +33,25 @@ def display_main_menu():
 def validate_user_choice():
     """
     Validate the input from user.
+    Return to the user's input until data provided is valid
     """
-    try:
-        choice = input("\nEnter your choice (1-3): ")
-        if choice == "1":
-            print("Accessing Moodtracker Survey...")
-        elif choice == "2":
-            print("Accessing Analysis Program...")
-        elif choice == "3":
-            print("Exiting Program...")
-        else:
-            raise ValueError("Invalid selection.")
+    while True:
     
-    except ValueError as e:
-        print(f"{e}, please try again: ")
+        try:
+            choice = input("\nEnter your choice (1-3): ")
+            if choice == "1":
+                print("Accessing Moodtracker Survey...")
+                break
+            elif choice == "2":
+                print("Accessing Analysis Program...")
+                break
+            elif choice == "3":
+                print("Exiting Program...")
+                break
+            else:
+                raise ValueError("Invalid selection.")
+        
+        except ValueError as e:
+            print(f"{e}, please try again: ")
 
 display_main_menu()
