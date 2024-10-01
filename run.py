@@ -40,18 +40,31 @@ def validate_user_choice():
         try:
             choice = input("\nEnter your choice (1-3): ")
             if choice == "1":
-                print("Accessing Moodtracker Survey...")
+                print("Accessing Moodtracker Survey...\n")
+                access_survey()
                 break
             elif choice == "2":
-                print("Accessing Analysis Program...")
+                print("Accessing Analysis Program...\n")
+                analysis_program()
                 break
             elif choice == "3":
                 print("Exiting Program...")
+                quit()
                 break
             else:
                 raise ValueError("Invalid selection.")
         
         except ValueError as e:
             print(f"{e}, please try again: ")
+
+def access_survey():
+    print("." * 50)
+    print("     Welcome to Employees Satisfaction Survey")
+    print("." * 50)
+
+def analysis_program():
+    print(">" * 50)
+    print("           Welcome to Analysis Program.")
+    print("<" * 50)
 
 display_main_menu()

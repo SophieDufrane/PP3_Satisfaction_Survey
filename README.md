@@ -42,9 +42,9 @@ Here the key features:
     - Result: the feature responded as expected and displayed the data from the worksheet survey_result
 
 - **Validate user's selection in the main Menu**
-    - Expected: program is expected to verify if the data provided as an input is 1, 2 or 3. If so, the program will move to the section selected. If not it will display a ValueError message and will prompt the user to try again.
+    - Expected: program is expected to verify if the data provided is 1, 2 or 3. If so, the program will move to the section selected. If not it will display a ValueError message and will prompt the user to try again.
     - Testing: tested the program by running run.py in the terminal.
-    - Result: the feature responded as expected, with the input 1, 2 or 3, the program send a message that we are accessing the option selected. With anything else, we receive the error message that the data is invalid.
+    - Result: the feature responded as expected, with the input 1, 2 or 3, the program informs that it is accessing to the option selected, then accesses the section selected. For any other data, an error message requests that the user tries again as data provided invalid.
 
 for manual test cases: Expected - Feature is expected to do X when the user does Y. Testing - Tested the feature by doing Y. Result - The feature responded as expected and did X, OR, The feature did not respond due to Z. Fix - A solution was found by ABC.
 
