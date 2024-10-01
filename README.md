@@ -46,6 +46,13 @@ Here the key features:
     - Testing: tested the program by running run.py in the terminal.
     - Result: the feature responded as expected, with the input 1, 2 or 3, the program informs that it is accessing to the option selected, then accesses the section selected. For any other data, an error message requests that the user tries again as data provided invalid.
 
+- **Using class and dictionary to list the Main menu Options**
+    - Expected: the command line is expected to display the options as: index (1, 2, 3) and name of the section.
+    - Testing: tested the program by running run.py in the terminal.
+    - Result: the feature did not responded as expected and displayed the index / sections from 3 to 1. 
+    - Fix: To fix this and maintain the order of the options, I use a dictionary to preserve the order instead of a set.
+
+
 for manual test cases: Expected - Feature is expected to do X when the user does Y. Testing - Tested the feature by doing Y. Result - The feature responded as expected and did X, OR, The feature did not respond due to Z. Fix - A solution was found by ABC.
 
 ### Feature Functionality Testing

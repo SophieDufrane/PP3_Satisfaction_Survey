@@ -15,6 +15,20 @@ SHEET = GSPREAD_CLIENT.open('satisfaction-survey')
 survey = SHEET.worksheet('survey_result')
 data = survey.get_all_values()
 
+class MainMenuOptions:
+    def __init__ (self, index, option):
+        self.index = index
+        self.option = option
+    
+    def description(self):
+        return f"{self.index} - {self.option}"
+
+menu_options = [
+    MainMenuOptions(1, "Access to Survey"),
+    MainMenuOptions(2, "Access to Analysis Program"),
+    MainMenuOptions(3, "Exit Program")
+]
+
 def display_main_menu():
     """
     Display the Main Menu and program options.
@@ -24,9 +38,9 @@ def display_main_menu():
     print("               WELCOME TO MOODTRACKER")
     print("=" * 50)
     print("\nPlease select an option:\n")
-    print("1 - Access to Satisfaction Survey")
-    print("2 - Access to Analysis Program")
-    print("3 - Exit Program")
+
+    for option in menu_options:
+        print(option.description())
 
     validate_user_choice()
 
