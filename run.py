@@ -47,7 +47,6 @@ question_options = {
     ]
 }
 
-
 def display_main_menu():
     """
     Display the Main Menu and program options.
@@ -66,7 +65,7 @@ def display_main_menu():
 def validate_user_choice():
     """
     Validate the input from user.
-    Return to the user's input until data provided is valid
+    Return to the user's input until data provided is valid.
     """
     while True:
     
@@ -93,7 +92,7 @@ def validate_user_choice():
 def access_survey():
     """
     Display the survey and get the user's answers.
-    Store the responses in a dictionary
+    Store the responses in a dictionary.
     """
     print("." * 50)
     print("     Welcome to Employees Satisfaction Survey")
@@ -106,6 +105,10 @@ def access_survey():
         for answer in answers:
             print(f"- {answer}")
 
+        response = input("\nPlease enter your selection (1-5): ")
+        user_responses[question] = response
+    
+    print(f"Your answers: {user_responses}")
 
 def analysis_program():
     print(">" * 50)
