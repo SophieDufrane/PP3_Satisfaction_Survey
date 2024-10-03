@@ -111,9 +111,9 @@ def access_survey():
         # Prompt user for an answer for the current question
         while True:
             try:
-                choice = int(input("\nPlease enter your selection (1-5): ")) # use len instead of 5
+                choice = int(input(f"\nPlease enter your selection (1-{len(answers)}): "))
                 if 1 <= choice <= len(answers):
-                    user_responses[question] = answers[choice]
+                    user_responses[question] = answers[choice -1]
                     break
                 else:
                     raise ValueError("Invalid selection.")
