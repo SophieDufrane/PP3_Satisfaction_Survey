@@ -100,15 +100,33 @@ def access_survey():
 
     user_responses = {}
 
+    # Iterate over each question in the survey
     for question, answers in question_options.items():
         print(f"\n {question}")
-        for answer in answers:
-            print(f"- {answer}")
+        
+        # Display answers with index
+        for index, answer in enumerate(answers, 1):
+            print(f"{index} - {answer}")
 
-        response = input("\nPlease enter your selection (1-5): ")
-        user_responses[question] = response
+        # Prompt user for an answer for the current question
+        while True:
+            try:
+                choice = int(input("\nPlease enter your selection (1-5): ")) # use len instead of 5
+                if 1 <= choice <= len(answers):
+                    user_responses[question] = answers[choice]
+                    break
+                else:
+                    raise ValueError("Invalid selection.")
+        
+            except ValueError as e:
+                print(f"{e}, please try again: ")
+
+    print("\nThank you for your time!")
+    print("Here your answers: ")
+    for question, answers in user_responses.items():
+        print(f"- {question}: {answers}")
     
-    print(f"Your answers: {user_responses}")
+    return user_responses
 
 def analysis_program():
     print(">" * 50)
