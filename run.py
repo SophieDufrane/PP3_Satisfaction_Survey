@@ -11,11 +11,12 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('satisfaction-survey')
-
 survey = SHEET.worksheet('survey_result')
-data = survey.get_all_values()
 
 class MainMenuOptions:
+    """
+    Display the Main Menu Options, with an index and description.
+    """
     def __init__ (self, index, option):
         self.index = index
         self.option = option
@@ -49,8 +50,9 @@ question_options = {
 
 def display_main_menu():
     """
-    Display the Main Menu and program options.
-    Prompt the user to select an option.
+    Display the Main Menu with options.
+    Call the get_user_choice function to check if input is valid.
+    Move to the next action based on the user's choice.
     """
     print("=" * 50)
     print("               WELCOME TO MOODTRACKER")
@@ -61,6 +63,8 @@ def display_main_menu():
         print(option.display_menu())
 
     choice = get_user_choice(menu_options)
+
+    # Find a more dynamic way to use the dict and move to next action without hard coding
     if choice == 1:
         print("Accessing Moodtracker Survey...\n")
         access_survey()
@@ -72,6 +76,10 @@ def display_main_menu():
         quit()
 
 def get_user_choice(options):
+    """
+    Get the user's choice.
+    Verify if the input is valid.
+    """
     # Prompt user for an options
     while True:
         try:
@@ -87,8 +95,10 @@ def get_user_choice(options):
 
 def access_survey():
     """
-    Display the survey and get the user's answers.
+    Display the survey.
+    Call the get_user_choice function to check if input is valid.
     Store the responses in a dictionary.
+    Display the responses.
     """
     print("." * 50)
     print("     Welcome to Employees Satisfaction Survey")
@@ -108,11 +118,24 @@ def access_survey():
         user_responses[question] = answers[choice -1]
 
     print("\nThank you for your time!")
-    print("Here your answers: ")
+    print("Here your answers: \n")
     for question, answers in user_responses.items():
         print(f"- {question}: {answers}")
     
-    return user_responses
+    update_worksheet(user_responses, survey)
+    
+
+def update_worksheet(user_responses, survey):
+    """
+    Convert the user's responses from a dictionary to a list format.
+    Update the worksheet with the user's answers.
+    """
+
+    print("\nUpdating worksheet...")
+    responses_list = list(user_responses.values()) # Get the values from dictionary and convert them into a list 
+    survey.append_row(responses_list) # Add a new row in worksheet with values from the list
+
+    print("Worksheet updated successfully.\n")
 
 def analysis_program():
     print(">" * 50)

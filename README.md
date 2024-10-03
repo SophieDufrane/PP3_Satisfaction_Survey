@@ -37,7 +37,7 @@ Here the key features:
 ## Testing:
 
 - **Wire API and Google sheet TEST**
-    - Expected: the command line is expected to retrieve the data from the worksheet when running the program.
+    - Expected: when running the program it is expected to retrieve the data from the worksheet.
     - Testing: tested the program by running run.py in the terminal.
     - Result: the feature responded as expected and displayed the data from the worksheet survey_result
 
@@ -51,6 +51,12 @@ Here the key features:
     - Testing: tested the program by running run.py in the terminal.
     - Result: the feature did not responded as expected and displayed the index / sections from 3 to 1. 
     - Fix: To fix this and maintain the order of the options, I use a dictionary to preserve the order instead of a set.
+  
+- **Survey responses**
+    - Expected: the command line is expected to get the user's responses and display a summary (to check if the data is correct).
+    - Testing: tested the program by running run.py in the terminal.
+    - Result: the feature did not responded as expected and displayed others answers (Satisfied instead of Very Satisfied for example). 
+    - Fix: As the answers are stored in a list, the index start at zero and not 1. By substrating 1 form the choice, we'll get the correct answer.
 
 
 for manual test cases: Expected - Feature is expected to do X when the user does Y. Testing - Tested the feature by doing Y. Result - The feature responded as expected and did X, OR, The feature did not respond due to Z. Fix - A solution was found by ABC.
