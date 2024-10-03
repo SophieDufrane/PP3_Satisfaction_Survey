@@ -20,7 +20,7 @@ class MainMenuOptions:
         self.index = index
         self.option = option
     
-    def description(self):
+    def display_menu(self):
         return f"{self.index} - {self.option}"
 
 menu_options = [
@@ -58,36 +58,32 @@ def display_main_menu():
     print("\nPlease select an option:\n")
 
     for option in menu_options:
-        print(option.description())
+        print(option.display_menu())
 
-    validate_user_choice()
+    choice = get_user_choice(menu_options)
+    if choice == 1:
+        print("Accessing Moodtracker Survey...\n")
+        access_survey()
+    elif choice == 2:
+        print("Accessing Analysis Program...\n")
+        analysis_program()
+    elif choice == 3:
+        print("Exiting Program...")
+        quit()
 
-def validate_user_choice():
-    """
-    Validate the input from user.
-    Return to the user's input until data provided is valid.
-    """
+def get_user_choice(options):
+    # Prompt user for an options
     while True:
-    
         try:
-            choice = input("\nEnter your choice (1-3): ")
-            if choice == "1":
-                print("Accessing Moodtracker Survey...\n")
-                access_survey()
-                break
-            elif choice == "2":
-                print("Accessing Analysis Program...\n")
-                analysis_program()
-                break
-            elif choice == "3":
-                print("Exiting Program...")
-                quit()
+            choice = int(input(f"\nPlease enter your selection (1-{len(options)}): "))
+            if 1 <= choice <= len(options):
+                return choice
                 break
             else:
                 raise ValueError("Invalid selection.")
         
         except ValueError as e:
-            print(f"{e}, please try again: ")
+            print(f"{e}, please try again: ")    
 
 def access_survey():
     """
@@ -108,18 +104,8 @@ def access_survey():
         for index, answer in enumerate(answers, 1):
             print(f"{index} - {answer}")
 
-        # Prompt user for an answer for the current question
-        while True:
-            try:
-                choice = int(input(f"\nPlease enter your selection (1-{len(answers)}): "))
-                if 1 <= choice <= len(answers):
-                    user_responses[question] = answers[choice -1]
-                    break
-                else:
-                    raise ValueError("Invalid selection.")
-        
-            except ValueError as e:
-                print(f"{e}, please try again: ")
+        choice = get_user_choice(answers)
+        user_responses[question] = answers[choice -1]
 
     print("\nThank you for your time!")
     print("Here your answers: ")
