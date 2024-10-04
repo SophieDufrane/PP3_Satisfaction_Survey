@@ -221,7 +221,8 @@ def summary_statistic():
     for question, answers in survey_data.items():
         print(f"\n{question}:")
         for answer, count in answers.items():
-            print(f"   ---> {answer}: {count} answer")
+            response_label = "answer" if count == 1 else "answers"
+            print(f"   ---> {answer}: {count} {response_label}")
 
 def top_analysis():
     print("Top Satisfaction & Top Concerns:")
