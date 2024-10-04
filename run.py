@@ -199,10 +199,17 @@ def summary_statistic():
     Get the data from the survey_result worksheet.
     Generate for each question the number of answers received.
     """
-    print("Summary Statistic:")
-    data = survey.get_all_values()
+    print("Summary Statistic:\n")
     
-    print(data)
+    data = survey.get_all_values()
+    headers = data[0]
+    rows = data[1:]
+    survey_data = {}
+
+    for index, header in enumerate(headers):
+        answers = [row[index] for row in rows]
+
+        print(answers)
 
 def top_analysis():
     print("Top Satisfaction & Top Concerns:")
