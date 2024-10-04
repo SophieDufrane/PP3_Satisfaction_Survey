@@ -33,7 +33,7 @@ main_menu_options = [
 analysis_menu_options = [
     MenuOptions(1, "Summary Statistic"),
     MenuOptions(2, "Top Satisfaction & Top Concerns"),
-    MenuOptions(3, "Exit Program")
+    MenuOptions(3, "Back to Main Menu")
 ]
 
 # Dictionary with Question as key and list of answers as values
@@ -181,5 +181,23 @@ def analysis_program():
         print(option.display_menu())
 
     choice = get_user_choice(analysis_menu_options)
+
+    # Find a more dynamic way to use the dict and move to next action without hard coding
+    if choice == 1:
+        print("Accessing Summary Statistic...\n")
+        summary_statistic()
+    elif choice == 2:
+        print("Accessing Top Satisfaction & Top Concerns...\n")
+        top_analysis()
+    elif choice == 3:
+        print("Back to Main Menu...")
+        display_main_menu()
+
+def summary_statistic():
+    print("Summary Statistic:")
+
+def top_analysis():
+    print("Top Satisfaction & Top Concerns:")
+
 
 display_main_menu()
