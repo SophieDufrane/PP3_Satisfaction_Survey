@@ -209,7 +209,14 @@ def summary_statistic():
     for index, header in enumerate(headers):
         answers = [row[index] for row in rows]
 
-        print(answers)
+        answer_count = {}
+        for answer in answers:
+            if answer in answer_count:
+                answer_count[answer] += 1
+            else:
+                answer_count[answer] = 1
+    
+        print(answer_count)
 
 def top_analysis():
     print("Top Satisfaction & Top Concerns:")
