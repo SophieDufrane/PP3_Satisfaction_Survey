@@ -194,7 +194,15 @@ def analysis_program():
         display_main_menu()
 
 def summary_statistic():
+    """
+    Display the Summary Statistic.
+    Get the data from the survey_result worksheet.
+    Generate for each question the number of answers received.
+    """
     print("Summary Statistic:")
+    data = survey.get_all_values()
+    
+    print(data)
 
 def top_analysis():
     print("Top Satisfaction & Top Concerns:")
