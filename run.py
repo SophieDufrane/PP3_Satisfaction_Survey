@@ -45,6 +45,34 @@ question_options = {
         "Average",
         "Poor",
         "Very Poor",
+    ],
+    "Do you feel you have opportunities for professional growth and development?":[
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree",
+    ],
+    "How would you rate your work-life balance?":[
+        "Excellent",
+        "Good",
+        "Average",
+        "Poor",
+        "Very Poor",
+    ],
+    "How effective is communication within the company?":[
+        "Very Effective",
+        "Effective",
+        "Neutral",
+        "Ineffective",
+        "Very Ineffective",
+    ],
+    "Overall, how satisfied are you with working at our company?":[
+        "Very Satisfied",
+        "Satisfied",
+        "Neutral",
+        "Dissatisfied",
+        "Very Dissatisfied"
     ]
 }
 
@@ -86,7 +114,6 @@ def get_user_choice(options):
             choice = int(input(f"\nPlease enter your selection (1-{len(options)}): "))
             if 1 <= choice <= len(options):
                 return choice
-                break
             else:
                 raise ValueError("Invalid selection.")
         
@@ -123,7 +150,7 @@ def access_survey():
         print(f"- {question}: {answers}")
     
     update_worksheet(user_responses, survey)
-    
+
 
 def update_worksheet(user_responses, survey):
     """
