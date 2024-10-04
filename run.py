@@ -13,9 +13,9 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('satisfaction-survey')
 survey = SHEET.worksheet('survey_result')
 
-class MainMenuOptions:
+class MenuOptions:
     """
-    Display the Main Menu Options, with an index and description.
+    Display the Menu Options, with an index and description.
     """
     def __init__ (self, index, option):
         self.index = index
@@ -24,10 +24,16 @@ class MainMenuOptions:
     def display_menu(self):
         return f"{self.index} - {self.option}"
 
-menu_options = [
-    MainMenuOptions(1, "Access to Survey"),
-    MainMenuOptions(2, "Access to Analysis Program"),
-    MainMenuOptions(3, "Exit Program")
+main_menu_options = [
+    MenuOptions(1, "Access to Survey"),
+    MenuOptions(2, "Access to Analysis Program"),
+    MenuOptions(3, "Exit Program")
+]
+
+analysis_menu_options = [
+    MenuOptions(1, "Summary Statistic"),
+    MenuOptions(2, "Top Satisfaction & Top Concerns"),
+    MenuOptions(3, "Exit Program")
 ]
 
 # Dictionary with Question as key and list of answers as values
@@ -85,12 +91,12 @@ def display_main_menu():
     print("=" * 50)
     print("               WELCOME TO MOODTRACKER")
     print("=" * 50)
-    print("\nPlease select an option:\n")
+    print("\n")
 
-    for option in menu_options:
+    for option in main_menu_options:
         print(option.display_menu())
 
-    choice = get_user_choice(menu_options)
+    choice = get_user_choice(main_menu_options)
 
     # Find a more dynamic way to use the dict and move to next action without hard coding
     if choice == 1:
@@ -150,6 +156,7 @@ def access_survey():
         print(f"- {question}: {answers}")
     
     update_worksheet(user_responses, survey)
+    # next action? back to main menu, exit program....
 
 
 def update_worksheet(user_responses, survey):
@@ -168,5 +175,11 @@ def analysis_program():
     print(">" * 50)
     print("           Welcome to Analysis Program.")
     print("<" * 50)
+    print("\n")
+
+    for option in analysis_menu_options:
+        print(option.display_menu())
+
+    choice = get_user_choice(analysis_menu_options)
 
 display_main_menu()
