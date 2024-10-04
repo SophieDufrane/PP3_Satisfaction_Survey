@@ -1,8 +1,20 @@
-# Moodtracker - Check your employees Satisfaction and improve your business culture
+# Moodtracker - The most modern Voice of the Employee tool on the market today.
 
-The [Moodtracker](https://sophiedufrane.github.io/PP2_Rock_Paper_Scissors_Lizard_Spock_Game/) is a tool that provides people from HR.......
+The [Moodtracker](https://sophiedufrane.github.io/PP2_Rock_Paper_Scissors_Lizard_Spock_Game/) project was inspired by a tool already in use at *Workhuman* (my company), which is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
 
-'As a [persona role], I want to [perform some task] so that I can [achieve some goal]'. 
+This Python project is a simplified version of the *Workhuman - Moodtracker*. It provides a command-line tool that serves two distinct purposes:
+- To allow employees to easily participate in a satisfaction survey.
+- To enable HR or management to analyze the survey data, generate key insights such as summary statistics and satisfaction levels, and identify areas for improvement.
+
+**For Employees (Survey Respondents)**:
+- As an employee, I want to easily access and complete the survey questions so that I can share my feedback on the company’s performance.
+
+- As an employee, I want the survey process to be simple and straightforward so that I can complete it quickly without technical difficulties.
+
+**For HR/Managers (Survey Analysts)**:
+- As an HR manager, I want to collect and analyze employee responses from the survey so that I can identify satisfaction trends, review the overall sentiment of the employees and identify the areas of concern within the company.
+
+- As a manager, I want to generate summary statistics and analyze top satisfaction/concern areas so that I can make data-driven decisions to improve employee satisfaction.
 
 ![Responsive Mockup](assets/media/rock_paper_scissors_mockup.png)
 
@@ -59,21 +71,14 @@ Here the key features:
     - Fix: As the answers are stored in a list, the index start at zero and not 1. By substrating 1 form the choice, we'll get the correct answer.
 
 
-for manual test cases: Expected - Feature is expected to do X when the user does Y. Testing - Tested the feature by doing Y. Result - The feature responded as expected and did X, OR, The feature did not respond due to Z. Fix - A solution was found by ABC.
-
 ### Feature Functionality Testing
 
-- **Accessibility and Browser Compatibility**: Tested in the following browsers:
-  - Google Chrome
-  - Microsoft Edge
-  - Mozilla Firefox
+- **Accessibility and Browser Compatibility**: 
 
 - **Testing**: lalala.
 
 
 ### Validator Testing
-
-- **HTML**: No errors were found when passing the code through the [W3C Validator](https://validator.w3.org/).
 
 
 ### Deployment Steps
@@ -88,6 +93,6 @@ The live link can be found here: [Moodtracker](https://sophiedufrane.github.io/P
 
 ### Content
 
-- Inspiration: Workhuman Moodtracker
+- Inspiration: [Workhuman](https://www.workhuman.com/)
   
 ### Media
