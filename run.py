@@ -125,14 +125,16 @@ def get_user_choice(options):
     # Prompt user for an options
     while True:
         try:
-            choice = int(input(f"\nPlease enter your selection (1-{len(options)}): "))
+            choice = int(
+                input(f"\nPlease enter your selection (1-{len(options)}):\n")
+                )
             if 1 <= choice <= len(options):
                 return choice
             else:
                 raise ValueError("Invalid selection.")
 
         except ValueError as e:
-            print(f"{e}, please try again: ")
+            print(f"{e}, please try again.")
 
 
 def access_survey():

@@ -104,8 +104,10 @@ Here the list of main issues raised and fixed after running flake8:
 
 The site was deployed to Heroku following the steps below:
 
-1. Step 1...
-2. Step 2...
+1. Ensure that the `run.py` file is conform before deployment:
+  - Add `\n` at the end of any inputs
+2. In *Gitpod*, create a list of dependencies in `requirements.txt` file:
+  - Run `pip3 freeze > requirements.txt` in the terminal
 
 
 The live link can be found here: [Moodtracker](ADD LINK HERE)
