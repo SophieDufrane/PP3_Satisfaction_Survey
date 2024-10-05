@@ -1,6 +1,6 @@
 # Moodtracker - The most modern Voice of the Employee tool on the market today.
 
-The [Moodtracker](ADD LINK HERE) project was inspired by a tool already in use at *Workhuman* (my company), which is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
+The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at *Workhuman* (my company), which is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
 
 This Python project is a simplified version of the *Workhuman - Moodtracker*. It provides a command-line tool that serves two distinct purposes:
 - To allow employees to easily participate in a satisfaction survey.
@@ -102,15 +102,32 @@ Here the list of main issues raised and fixed after running flake8:
 
 ### Deployment Steps
 
-The site was deployed to Heroku following the steps below:
+The site was deployed successfully to *Heroku* following the steps below:
 
 1. Ensure that the `run.py` file is conform before deployment:
-  - Add `\n` at the end of any inputs
+    - Add `\n` at the end of any inputs.
 2. In *Gitpod*, create a list of dependencies in `requirements.txt` file:
-  - Run `pip3 freeze > requirements.txt` in the terminal
+    - Run `pip3 freeze > requirements.txt` in the terminal.
+3. In *Heroku* account, create the new App:
+    - Select `New` and `Create a new app`.
+    - Name the App: `satisfaction-survey-sd` and choose a region: `Europe`Clic `Create App`.
+4. In the new App page, access to the `Settings` section.
+5. Create a `Config Var` to access the credentials in `creds.json` file:
+    - In the field `KEY` enter `CREDS`.
+    - In the field `VALUE` paste the entire `creds.json` file content.
+    - Clic `Add`.
+6. Add `Buildpacks` to install other dependancies:
+    - Clic `Add buildpack`.
+    - Select `python` and add, then select `nodejs` and add.
+7. Access to the `Deploy` section.
+8. Select the deployment method:
+    - Select `GitHub`
+    - Search for the repository by taping the name in the search barre `PP3_Satisfaction_Survey`
+    - Clic on `Connect`
+    - Select the option `Automatic deploys`
+9. Once App deployed, the message *Your app was successfully deployed.*
 
-
-The live link can be found here: [Moodtracker](ADD LINK HERE)
+The live link can be found here: [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/)
 
 ### Content
 
