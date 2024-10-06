@@ -88,6 +88,29 @@ question_options = {
     ],
 }
 
+# Define the mapping of answers to scores.
+answers_mapping = {
+	"Very Satisfied": 5,
+	"Excellent": 5,
+	"Strongly Agree": 5,
+	"Very Effective": 5,
+	"Satisfied": 4,
+	"Good": 4,
+	"Agree": 4,
+	"Effective": 4,
+	"Neutral": 3,
+	"Average": 3,
+	"Dissatisfied": 2,
+	"Poor": 2,
+	"Disagree": 2,
+	"Ineffective": 2,
+	"Very Dissatisfied": 1,
+	"Very Poor": 1,
+	"Stronly Disagree": 1,
+	"Very Poor": 1,
+    "Very Ineffective": 1,   
+}
+
 
 def display_main_menu():
     """
@@ -258,7 +281,18 @@ def summary_statistic():
 
 
 def top_analysis():
-    print("Top Satisfaction & Top Concerns:")
+    """
+    Display the Top Satisfaction & Top Concerns.
+    Get the data from the survey_result worksheet.
+    Generate for each question a score based on the answers mapping sum.
+    """
+    print("=" * 50)
+    print("          TOP SATISFACTION & TOP CONCERNS")
+    print("=" * 50)
+
+    headers, rows, total_answers = get_survey_data()
+    survey_data = {}
+    total_score = 0
 
 
 display_main_menu()
