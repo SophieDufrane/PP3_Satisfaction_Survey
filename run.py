@@ -206,6 +206,18 @@ def analysis_program():
         display_main_menu()
 
 
+def get_survey_data():
+    """
+    Retrieve survey data from survey_result worksheet.
+    Return Headers and rows in separate variables.
+    """
+    data = survey.get_all_values()
+    headers = data[0]
+    rows = data[1:]
+    total_answers = len(rows)
+    return headers, rows, total_answers
+
+
 def summary_statistic():
     """
     Display the Summary Statistic.
@@ -216,11 +228,8 @@ def summary_statistic():
     print("                SUMMARY STATISTIC")
     print("=" * 50)
 
-    data = survey.get_all_values()
-    headers = data[0]
-    rows = data[1:]
+    headers, rows, total_answers = get_survey_data()
     survey_data = {}
-    total_answers = len(rows)
 
     print(f"\n*** WE RECEIVED A TOTAL OF {total_answers} RESPONSES ***")
 
