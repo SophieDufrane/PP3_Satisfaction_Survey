@@ -77,7 +77,7 @@ Along the development, I tested bloc of code using  [Python Tutor](https://pytho
   - Expected: the command line is expected to get the user's responses and display a summary (to check if the data is correct).
   - Testing: tested the program by running run.py in the terminal.
   - Result: the feature did not responded as expected and displayed others answers (Satisfied instead of Very Satisfied for example). 
-  - Fix: As the answers are stored in a list, the index start at zero and not 1. By substrating 1 form the choice, we'll get the correct answer.
+  - Fix: As the answers are stored in a list, the index start at zero and not 1. By substrating 1 form the choice, we'll get the correct answer. Also in the second loop, I was re-using the variable name `answers` already used in the first loop, which confused the program. Re-naming the variable `selected_answer` inside the final print loop resolved clearly distinguishing the correct data to print. 
 
 
 ### PEP8 validation

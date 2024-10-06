@@ -167,9 +167,9 @@ def access_survey():
     Store the responses in a dictionary.
     Display the responses.
     """
-    print("." * 50)
-    print("     Welcome to Employees Satisfaction Survey")
-    print("." * 50)
+    print("-" * 50)
+    print("          >>>>> YOUR VOICE MATTERS <<<<<")
+    print("-" * 50)
 
     user_responses = {}
 
@@ -184,10 +184,10 @@ def access_survey():
         choice = get_user_choice(answers)
         user_responses[question] = answers[choice - 1]
 
-    print("\nThank you for your time!")
-    print("Here your answers: \n")
-    for question, answers in user_responses.items():
-        print(f"- {question}: {answers}")
+    print("\nYour feedback, our improvement!\n")
+    for question, selected_answer in user_responses.items():
+        print(question)
+        print(f"  --> {selected_answer.upper()}\n")
 
     update_worksheet(user_responses, survey)
     # next action? back to main menu, exit program....
@@ -199,11 +199,11 @@ def update_worksheet(user_responses, survey):
     Update the worksheet with the user's answers.
     """
 
-    print("\nUpdating worksheet...")
+    print("\nUpdating...")
     responses_list = list(user_responses.values())
     survey.append_row(responses_list)
 
-    print("Worksheet updated successfully.\n")
+    print("Thank you, your answers have been recorded!\n")
 
 
 def analysis_program():
