@@ -244,7 +244,7 @@ def summary_statistic():
                 answer_count[answer] = 1
 
         survey_data[header] = {
-            answer: (count / total_answers) * 100
+            answer: round((count / total_answers) * 100, 1)
             for answer, count in answer_count.items()
         }
 
