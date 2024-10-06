@@ -32,13 +32,18 @@ class MenuOptions:
 main_menu_options = [
     MenuOptions(1, "Access to Survey"),
     MenuOptions(2, "Access to Analysis Program"),
-    MenuOptions(3, "Exit Program"),
+    MenuOptions(3, "Exit Program")
 ]
 
 analysis_menu_options = [
     MenuOptions(1, "Summary Statistic"),
     MenuOptions(2, "Top Satisfaction & Top Concerns"),
-    MenuOptions(3, "Back to Main Menu"),
+    MenuOptions(3, "Back to Main Menu")
+]
+
+next_action_menu = [
+    MenuOptions(1, "Back to Main Menu"),
+    MenuOptions(2, "Exit Program")
 ]
 
 # Dictionary with Question as key and list of answers as values
@@ -190,7 +195,7 @@ def access_survey():
         print(f"  --> {selected_answer.upper()}\n")
 
     update_worksheet(user_responses, survey)
-    # next action? back to main menu, exit program....
+    next_action()
 
 
 def update_worksheet(user_responses, survey):
@@ -198,7 +203,6 @@ def update_worksheet(user_responses, survey):
     Convert the user's responses from a dictionary to a list format.
     Update the worksheet with the user's answers.
     """
-
     print("\nUpdating...")
     responses_list = list(user_responses.values())
     survey.append_row(responses_list)
@@ -206,7 +210,33 @@ def update_worksheet(user_responses, survey):
     print("Thank you, your answers have been recorded!\n")
 
 
+def next_action():
+    """
+    Display options for next actions.
+    Allow user to choose one of the options.
+    """
+    print()
+    print("." * 50)
+    print("What would you like to do next? Please select an option:")
+    for option in next_action_menu:
+        print(option.display_menu())
+
+    choice = get_user_choice(main_menu_options)
+
+    # Find a dynamic way to move to next action without hard coding
+    if choice == 1:
+        print("Accessing to Main Menu...\n")
+        display_main_menu()
+    elif choice == 2:
+        print("Exiting Program...")
+        quit()
+
+
 def analysis_program():
+    """
+    Display the Analysis Program menu options.
+    Allow user to choose one of the options.
+    """
     print("=" * 50)
     print("           >>>>> ANALYSIS PROGRAM <<<<<")
     print("=" * 50)
@@ -280,6 +310,7 @@ def summary_statistic():
         for answer, percentage in answers.items():
             print(f"   --> {answer}: {percentage} %")
 
+    next_action()
 
 def top_analysis():
     """
@@ -311,5 +342,6 @@ def top_analysis():
     for question, score in sorted_score:
         print(f"- {question}: {score} / {max_score}")
 
+    next_action()
 
 display_main_menu()

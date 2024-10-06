@@ -23,7 +23,7 @@ This Python project is a simplified version of the *Workhuman - Moodtracker*. It
 To define the structure of the program, I started by working with a flowchart on [Lucid](https://lucid.app/lucidchart/6696772b-e3ff-4ca0-9902-c664edc9038e/edit?invitationId=inv_e35a23e0-a2a0-4a1a-8bd6-4be77803b441&page=0_0#). The flowchart helped me visualize the overall flow of the application, including how users interact with the main menu, survey questions, and analysis options. It outlines the logical steps from displaying the menu, collecting user input, and storing survey responses, to analyzing the data retrieved from Google Sheets.
 
 By using a flowchart, I wanted to ensure a smooth, logical flow of data throughout.
-![Flowchart](ADD PICTURE LINK HERE)
+![Flowchart](media/flowcharts.png)
 
 ### Existing Features:
 
