@@ -218,6 +218,7 @@ def summary_statistic():
     headers = data[0]
     rows = data[1:]
     survey_data = {}
+    total_answers = len(rows)
 
     for index, header in enumerate(headers):
         answers = [row[index] for row in rows]
@@ -231,6 +232,7 @@ def summary_statistic():
 
         survey_data[header] = answer_count
 
+    print(f"We received {total_answers} answers.")
     for question, answers in survey_data.items():
         print(f"\n{question}:")
         for answer, count in answers.items():
