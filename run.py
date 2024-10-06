@@ -250,11 +250,12 @@ def summary_statistic():
     print("=" * 50)
     print("                SUMMARY STATISTIC")
     print("=" * 50)
+    print()
 
     headers, rows, total_answers = get_survey_data()
     survey_data = {}
 
-    print(f"\n*** WE RECEIVED A TOTAL OF {total_answers} RESPONSES ***")
+    print(f"*** WE RECEIVED A TOTAL OF {total_answers} RESPONSES ***")
 
     for index, header in enumerate(headers):
         answers = [row[index] for row in rows]
@@ -289,6 +290,7 @@ def top_analysis():
     print("=" * 50)
     print("          TOP SATISFACTION & TOP CONCERNS")
     print("=" * 50)
+    print()
 
     headers, rows, total_answers = get_survey_data()
     survey_score = {}
@@ -300,9 +302,11 @@ def top_analysis():
         for answer in answers:
             score = answers_mapping.get(answer,0)
             total_score += score
+        
         survey_score[header] = total_score
-    
-    print(survey_score)
+
+    for question, score in survey_score.items():
+        print(f"- {question}: {score}")
 
 
 display_main_menu()
