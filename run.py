@@ -291,8 +291,18 @@ def top_analysis():
     print("=" * 50)
 
     headers, rows, total_answers = get_survey_data()
-    survey_data = {}
-    total_score = 0
+    survey_score = {}
+
+    for index, header in enumerate(headers):
+        answers = [row[index] for row in rows]
+        
+        total_score = 0
+        for answer in answers:
+            score = answers_mapping.get(answer,0)
+            total_score += score
+        survey_score[header] = total_score
+    
+    print(survey_score)
 
 
 display_main_menu()
