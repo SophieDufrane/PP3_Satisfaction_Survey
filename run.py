@@ -294,6 +294,7 @@ def top_analysis():
 
     headers, rows, total_answers = get_survey_data()
     survey_score = {}
+    max_score = total_answers * 5
 
     for index, header in enumerate(headers):
         answers = [row[index] for row in rows]
@@ -304,9 +305,11 @@ def top_analysis():
             total_score += score
         
         survey_score[header] = total_score
+        sorted_score = sorted(survey_score.items(), key=lambda item: item[1], reverse = True)
 
-    for question, score in survey_score.items():
-        print(f"- {question}: {score}")
+    print("Survey results from highest to lowest score:\n")
+    for question, score in sorted_score:
+        print(f"- {question}: {score} / {max_score}")
 
 
 display_main_menu()
