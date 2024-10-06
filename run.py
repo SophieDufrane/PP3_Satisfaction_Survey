@@ -96,7 +96,7 @@ def display_main_menu():
     Move to the next action based on the user's choice.
     """
     print("=" * 50)
-    print("               WELCOME TO MOODTRACKER")
+    print("              WELCOME TO MOODTRACKER")
     print("=" * 50)
     print("\n")
 
@@ -184,9 +184,9 @@ def update_worksheet(user_responses, survey):
 
 
 def analysis_program():
-    print(">" * 50)
-    print("           Welcome to Analysis Program.")
-    print("<" * 50)
+    print("=" * 50)
+    print("           >>>>> ANALYSIS PROGRAM <<<<<")
+    print("=" * 50)
     print("\n")
 
     for option in analysis_menu_options:
@@ -212,13 +212,17 @@ def summary_statistic():
     Get the data from the survey_result worksheet.
     Generate for each question the number of answers received.
     """
-    print("Summary Statistic:\n")
+    print("=" * 50)
+    print("                SUMMARY STATISTIC")
+    print("=" * 50)
 
     data = survey.get_all_values()
     headers = data[0]
     rows = data[1:]
     survey_data = {}
     total_answers = len(rows)
+
+    print(f"\n*** WE RECEIVED A TOTAL OF {total_answers} RESPONSES ***")
 
     for index, header in enumerate(headers):
         answers = [row[index] for row in rows]
@@ -232,12 +236,14 @@ def summary_statistic():
 
         survey_data[header] = answer_count
 
-    print(f"We received {total_answers} answers.")
     for question, answers in survey_data.items():
-        print(f"\n{question}:")
+        print()
+        print("-" * 50)
+        print(question.upper())
+        print("-" * 50)
         for answer, count in answers.items():
             response_label = "answer" if count == 1 else "answers"
-            print(f"   ---> {answer}: {count} {response_label}")
+            print(f"   --> {answer}: {count} {response_label}")
 
 
 def top_analysis():
