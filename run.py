@@ -243,16 +243,18 @@ def summary_statistic():
             else:
                 answer_count[answer] = 1
 
-        survey_data[header] = answer_count
+        survey_data[header] = {
+            answer: (count / total_answers) * 100
+            for answer, count in answer_count.items()
+        }
 
     for question, answers in survey_data.items():
         print()
         print("-" * 50)
         print(question.upper())
         print("-" * 50)
-        for answer, count in answers.items():
-            response_label = "answer" if count == 1 else "answers"
-            print(f"   --> {answer}: {count} {response_label}")
+        for answer, percentage in answers.items():
+            print(f"   --> {answer}: {percentage} %")
 
 
 def top_analysis():
