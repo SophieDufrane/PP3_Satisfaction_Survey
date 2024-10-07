@@ -18,7 +18,7 @@ survey = SHEET.worksheet("survey_result")
 
 class MenuOptions:
     """
-    Display the Menu Options, with an index and description.
+    Display the Menus Options, with an index and description.
     """
 
     def __init__(self, index, option):
@@ -29,13 +29,13 @@ class MenuOptions:
         return f"{self.index} - {self.option}"
 
 
-main_menu_options = [
+main_menu = [
     MenuOptions(1, "Access to Survey"),
     MenuOptions(2, "Access to Analysis Program"),
     MenuOptions(3, "Exit Program")
 ]
 
-analysis_menu_options = [
+analysis_menu = [
     MenuOptions(1, "Summary Statistic"),
     MenuOptions(2, "Top Satisfaction & Top Concerns"),
     MenuOptions(3, "Back to Main Menu")
@@ -117,21 +117,33 @@ answers_mapping = {
 }
 
 
-def display_main_menu():
+def display_title(title):
     """
-    Display the Main Menu with options.
-    Call the get_user_choice function to check if input is valid.
-    Move to the next action based on the user's choice.
-    """
-    print("=" * 50)
-    print("              WELCOME TO MOODTRACKER")
-    print("=" * 50)
-    print("\n")
+    Displays the provided menu title with decorative formatting.
 
-    for option in main_menu_options:
+    """
+    print("=" * 50)
+    print(f"{title}")
+    print("=" * 50)
+
+
+def display_options(menu_options):
+    """
+    Displays the list of menu options.
+
+    """
+    for option in menu_options:
         print(option.display_menu())
 
-    choice = get_user_choice(main_menu_options)
+
+def display_main_menu():
+    """
+    Displays the main menu, handles user choice, and directs to next action
+    based on the selected option.
+    """
+    display_title("                    MAIN MENU")
+    display_options(main_menu)
+    choice = get_user_choice(main_menu)
 
     # Find a dynamic way to move to next action without hard coding
     if choice == 1:
@@ -139,7 +151,7 @@ def display_main_menu():
         access_survey()
     elif choice == 2:
         print("Accessing Analysis Program...\n")
-        analysis_program()
+        display_analysis_menu()
     elif choice == 3:
         print("Exiting Program...")
         quit()
@@ -167,14 +179,10 @@ def get_user_choice(options):
 
 def access_survey():
     """
-    Display the survey.
-    Call the get_user_choice function to check if input is valid.
-    Store the responses in a dictionary.
-    Display the responses.
+    Displays the survey questions, collects user responses, and stores them.
+    After submission, responses are displayed and saved to the worksheet.
     """
-    print("-" * 50)
-    print("          >>>>> YOUR VOICE MATTERS <<<<<")
-    print("-" * 50)
+    display_title("           >>>>> YOUR VOICE MATTERS <<<<<")
 
     user_responses = {}
 
@@ -218,10 +226,8 @@ def next_action():
     print()
     print("." * 50)
     print("What would you like to do next? Please select an option:")
-    for option in next_action_menu:
-        print(option.display_menu())
-
-    choice = get_user_choice(main_menu_options)
+    display_options(next_action_menu)
+    choice = get_user_choice(next_action_menu)
 
     # Find a dynamic way to move to next action without hard coding
     if choice == 1:
@@ -232,20 +238,15 @@ def next_action():
         quit()
 
 
-def analysis_program():
+def display_analysis_menu():
     """
-    Display the Analysis Program menu options.
-    Allow user to choose one of the options.
+    Display Menu with options for each menu.
+    Take 2 parameters: the title and the options.
+
     """
-    print("=" * 50)
-    print("           >>>>> ANALYSIS PROGRAM <<<<<")
-    print("=" * 50)
-    print("\n")
-
-    for option in analysis_menu_options:
-        print(option.display_menu())
-
-    choice = get_user_choice(analysis_menu_options)
+    display_title("             >>> ANALYSIS PROGRAM <<<")
+    display_options(analysis_menu)
+    choice = get_user_choice(main_menu)
 
     # Find a dynamic way to move to next action without hard coding
     if choice == 1:
@@ -277,10 +278,7 @@ def summary_statistic():
     Get the data from the survey_result worksheet.
     Generate for each question the number of answers received.
     """
-    print("=" * 50)
-    print("                SUMMARY STATISTIC")
-    print("=" * 50)
-    print()
+    display_title("               SUMMARY STATISTIC")
 
     headers, rows, total_answers = get_survey_data()
     survey_data = {}
@@ -318,10 +316,7 @@ def top_analysis():
     Get the data from the survey_result worksheet.
     Generate for each question a score based on the answers mapping sum.
     """
-    print("=" * 50)
-    print("          TOP SATISFACTION & TOP CONCERNS")
-    print("=" * 50)
-    print()
+    display_title("          TOP SATISFACTION & TOP CONCERNS")
 
     headers, rows, total_answers = get_survey_data()
     survey_score = {}

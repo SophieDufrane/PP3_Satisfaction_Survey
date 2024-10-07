@@ -58,27 +58,38 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 Along the development, I tested bloc of code using  [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) blablabla
 
 - **Wire API and Google sheet TEST**
-  - Expected: when running the program it is expected to retrieve the data from the worksheet.
-  - Testing: tested the program by running run.py in the terminal.
-  - Result: the feature responded as expected and displayed the data from the worksheet survey_result
+  - *Expected*: when running the program it is expected to retrieve the data from the worksheet.
+  - *Testing*: tested the program by running run.py in the terminal.
+  - *Result*: the feature responded as expected and displayed the data from the worksheet survey_result
 
 - **Validate user's selection in the main Menu**
-  - Expected: program is expected to verify if the data provided is 1, 2 or 3. If so, the program will move to the section selected. If not it will display a ValueError message and will prompt the user to try again.
-  - Testing: tested the program by running run.py in the terminal.
-  - Result: the feature responded as expected, with the input 1, 2 or 3, the program informs that it is accessing to the option selected, then accesses the section selected. For any other data, an error message requests that the user tries again as data provided invalid.
+  - *Expected*: program is expected to verify if the data provided is 1, 2 or 3. If so, the program will move to the section selected. If not it will display a ValueError message and will prompt the user to try again.
+  - *Testing*: tested the program by running run.py in the terminal.
+  - *Result*: the feature responded as expected, with the input 1, 2 or 3, the program informs that it is accessing to the option selected, then accesses the section selected. For any other data, an error message requests that the user tries again as data provided invalid.
 
 - **Using class and dictionary to list the Main menu Options**
-  - Expected: the command line is expected to display the options as: index (1, 2, 3) and name of the section.
-  - Testing: tested the program by running run.py in the terminal.
-  - Result: the feature did not responded as expected and displayed the index / sections from 3 to 1. 
-  - Fix: To fix this and maintain the order of the options, I use a dictionary to preserve the order instead of a set.
+  - *Expected*: the command line is expected to display the options as: index (1, 2, 3) and name of the section.
+  - *Testing*: tested the program by running run.py in the terminal.
+  - *Result*: the feature did not responded as expected and displayed the index / sections from 3 to 1. 
+  - *Fix*: To fix this and maintain the order of the options, I use a dictionary to preserve the order instead of a set.
   
 - **Survey responses**
-  - Expected: the command line is expected to get the user's responses and display a summary (to check if the data is correct).
-  - Testing: tested the program by running run.py in the terminal.
-  - Result: the feature did not responded as expected and displayed others answers (Satisfied instead of Very Satisfied for example). 
-  - Fix: As the answers are stored in a list, the index start at zero and not 1. By substrating 1 form the choice, we'll get the correct answer. Also in the second loop, I was re-using the variable name `answers` already used in the first loop, which confused the program. Re-naming the variable `selected_answer` inside the final print loop resolved clearly distinguishing the correct data to print. 
+  - *Expected*: the command line is expected to get the user's responses and display a summary (to check if the data is correct).
+  - *Testing*: tested the program by running run.py in the terminal.
+  - *Result*: the feature did not responded as expected and displayed others answers (Satisfied instead of Very Satisfied for example). 
+  - *Fix*: As the answers are stored in a list, the index start at zero and not 1. By substrating 1 form the choice, we'll get the correct answer. Also in the second loop, I was re-using the variable name `answers` already used in the first loop, which confused the program. Re-naming the variable `selected_answer` inside the final print loop resolved clearly distinguishing the correct data to print.
 
+
+## Refactoring Process: Improving Efficiency and Readability
+
+- **Menu Handling Logic**
+  - *Before Refactoring*: Initially, I had separate functions for handling different parts of the program (like the main menu and the analysis menu). Each had its own logic to display options and get user input, which was repetitive.
+
+  - *After Refactoring*: I created a more generic MenuOptions class that could be reused for all menus. With this in place, I only need to define the options in one place and could reuse the same functions for handling the display across multiple menus, reducing duplication.
+
+- **Avoiding repetitions**
+  -  *Before Refactoring*: Despite the MenuOptions class, I noticed that I was still repeating similar blocks of code in multiple parts of the project to display Menu titles and options. For example, both the Main menu and Analysis menu had nearly identical code for introducing the section: ![BeforeRefactoring](ADD PICTURE LINK HERE)
+  - *After Refactoring*: To reduce repetition, I refactored the code by creating 2 generic functions to handle the display of the title, and separatly the display of the options. These functions can be reused across different sections independently.
 
 ### PEP8 validation
 
@@ -110,20 +121,20 @@ The site was deployed successfully to *Heroku* following the steps below:
     - Run `pip3 freeze > requirements.txt` in the terminal.
 3. In *Heroku* account, create the new App:
     - Select `New` and `Create a new app`.
-    - Name the App: `satisfaction-survey-sd` and choose a region: `Europe`Clic `Create App`.
+    - Name the App: `satisfaction-survey-sd` and choose a region: `Europe`Click `Create App`.
 4. In the new App page, access to the `Settings` section.
 5. Create a `Config Var` to access the credentials in `creds.json` file:
     - In the field `KEY` enter `CREDS`.
     - In the field `VALUE` paste the entire `creds.json` file content.
-    - Clic `Add`.
+    - Click `Add`.
 6. Add `Buildpacks` to install other dependancies:
-    - Clic `Add buildpack`.
+    - Click `Add buildpack`.
     - Select `python` and add, then select `nodejs` and add.
 7. Access to the `Deploy` section.
 8. Select the deployment method:
     - Select `GitHub`
     - Search for the repository by taping the name in the search barre `PP3_Satisfaction_Survey`
-    - Clic on `Connect`
+    - Click on `Connect`
     - Select the option `Automatic deploys`
 9. Once App deployed, the message *Your app was successfully deployed.*
 
