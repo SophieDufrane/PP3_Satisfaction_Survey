@@ -1,57 +1,64 @@
 # Moodtracker - The most modern Voice of the Employee tool on the market today.
 
-The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at *Workhuman* (my company), which is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
+The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at *Workhuman*, the company I work for. This tool is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
 
-This Python project is a simplified version of the *Workhuman - Moodtracker*. It provides a command-line tool that serves two distinct purposes:
+This Python project is a simplified version of the *Workhuman - Moodtracker*. It provides a command-line program that serves two distinct purposes:
 - To allow employees to easily participate in a satisfaction survey.
-- To enable HR or management to analyze the survey data, generate key insights such as summary statistics and satisfaction levels, and identify areas for improvement.
+- To enable Human Ressources or management to analyze the survey data, generate key insights and identify areas for improvement.
 
 **For Employees (Survey Respondents)**:
-- As an employee, I want to easily access and complete the survey questions so that I can share my feedback on the company’s performance.
+- As an employee, I want to easily access and complete the survey questions so that I can share my feedback on the company’s performance, culture and how I feel in my current role.
 
 - As an employee, I want the survey process to be simple and straightforward so that I can complete it quickly without technical difficulties.
 
-**For HR/Managers (Survey Analysts)**:
-- As an HR manager, I want to collect and analyze employee responses from the survey so that I can identify satisfaction trends, review the overall sentiment of the employees and identify the areas of concern within the company.
+**For Human Ressources & Managers (Survey Analysis)**:
+- As an HR manager, I want to collect and analyze employee responses from the survey so that I can identify satisfaction trends, review the overall sentiment and identify areas of concern within the company.
 
-- As a manager, I want to generate summary statistics and analyze top satisfaction/concern areas so that I can make data-driven decisions to improve employee satisfaction.
+- As a manager, I want to generate summary statistics and analyze top satisfaction / concern so I can make data-driven decisions to improve employee satisfaction.
 
 ![Responsive Mockup](ADD PICTURE LINK HERE)
 
 ## Features:
 
-To define the structure of the program, I started by working with a flowchart on [Lucid](https://lucid.app/lucidchart/6696772b-e3ff-4ca0-9902-c664edc9038e/edit?invitationId=inv_e35a23e0-a2a0-4a1a-8bd6-4be77803b441&page=0_0#). The flowchart helped me visualize the overall flow of the application, including how users interact with the main menu, survey questions, and analysis options. It outlines the logical steps from displaying the menu, collecting user input, and storing survey responses, to analyzing the data retrieved from Google Sheets.
+To define the structure of the program, I started by working with a flowchart on [Lucid](https://lucid.app/lucidchart/6696772b-e3ff-4ca0-9902-c664edc9038e/edit?invitationId=inv_e35a23e0-a2a0-4a1a-8bd6-4be77803b441&page=0_0#). The flowchart helped me visualize the overall flow of the application, including how users interact with the main menu, survey questions, and analysis options. It helped defining the logical steps from displaying the menu, collecting user input, and storing survey responses, to analyzing the data retrieved from a Google Sheets.
 
 By using a flowchart, I wanted to ensure a smooth, logical flow of data throughout.
-![Flowchart](media/flowcharts.png)
+
+![Flowchart](ADD PICTURE LINK HERE)
 
 ### Existing Features:
 
 ![MainMenu](ADD PICTURE LINK HERE)
-- **Moodtracker Survey**
-  - Goal: Collecting employees statisfaction level. Employees can feel heard....lalalalala
-  - Feature: Access to question one by one, control that input is valid and prompt user to enter another value if not.....
-  - flow and UX...lalalala
+**Main Menu**
+- Overview: The Main Menu serves as a starting point for navigating between different sections of the program, allowing users to easily choose between starting the survey or accessing the analysis tools (for authorized personnel).
+- Features:
+  - Clear Option Presentation: The menu presents the available options in a simple, easy-to-read format, ensuring that users can make informed decisions.
+  - Input Validation: User inputs are validated to ensure that the selected menu options are valid. If an incorrect option is entered, the program will prompt the user to try again.
+  - User Flow: The flow from the main menu to other parts of the program is intuitive, providing a seamless experience.
 
 ![Survey](ADD PICTURE LINK HERE)
-- **Moodtracker Survey**
-  - Goal: Collecting employees statisfaction level. Employees can feel heard....lalalalala
-  - Feature: Access to question one by one, control that input is valid and prompt user to enter another value if not.....
-  - flow and UX...lalalala
+**Moodtracker Survey**
+- Goal: To collect employee satisfaction levels, ensuring that employees feel heard and valued within the organization. This tool offers a simple and engaging way for employees to provide feedback regurlarly, on different aspects of their job and work environment.
+- Features:
+  - Question Display: Employees are presented with one question at a time, allowing them to focus and provide thoughtful responses.
+  - Input Validation: The program ensures that all responses are valid by checking inputs. If an invalid input is detected, users are prompted to enter a correct value.
+  - User Experience: The survey design is quite simple and user-friendly, guiding employees through the process seamlessly. Prompts and clear instructions make it easy for users to navigate and complete the survey.
 
 ![Analysis](ADD PICTURE LINK HERE)
-- **Analysis Program**  
-  - Goal: Get insights from a large panel of employees....lalalala
-  - Features: Access to a Menu with different options, control that user's choice is a valid input.....
-  - flow and UX.....
-
+**Analysis Program**
+- Goal: To provide insightful data analysis from a large panel of employee responses, empowering HR and managers with actionable insights.
+- Feature: 
+  - Interactive Menu: The analysis section offers a clean, easy-to-navigate menu with multiple options, enabling users to explore survey results in detail.
+  - Input Validation: Similar to the survey section, user choices are validated. If an invalid selection is made, the program prompts the user to choose a valid option, maintaining smooth navigation.
+  - User Experience: This section has been designed to give HR professionals and managers quick access to meaningful statistics, making decision-making more informed and efficient.
 
 ### Features left to implement:
 
-- **Credentials requirement to access to Analysis Program**
-  As the program serves to main goals (Survey and results) we'll need to add a Credential requirement option to access the Analysis Program, as results should be confidentials....
+**Credentials requirement to access to Analysis Program**
+- Since the analysis section contains confidential survey results, a credential check will be implemented to ensure only authorized personnel can access this data.
 
-- **Other Analysis Options**
+**Additional Analysis Options**
+- The analysis program will be expanded to include more detailed metrics and deeper insights, providing a more comprehensive view of employee satisfaction and potential areas for improvement.
 
 ## Manual Testing:
 
@@ -146,7 +153,8 @@ The live link can be found here: [Moodtracker](https://satisfaction-survey-sd-a4
 
 
 ### Credits
-- The integration with *Google Sheets* was implemented using code examples from the **Code Institute** [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1)
+- The integration with *Google Sheets* was implemented using code examples from the  [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1) *Code Institute*
+
 
 ### External Libraries
 - `gspread`: Used to interact with *Google Sheets*. This library was essential for retrieving and storing survey responses in real-time, allowing the application to dynamically update and analyze survey data directly from the Google Sheets document.
