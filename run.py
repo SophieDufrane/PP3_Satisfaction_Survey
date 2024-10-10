@@ -1,4 +1,4 @@
-# External libraries used for accessing Google Sheets
+# External libraries used for accessing Google Sheets.
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -8,7 +8,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive",
 ]
 
-# Based on a code from Code Institute "Love Sandwiches" project
+# This code is based on the Code Institute "Love Sandwiches" project.
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -47,7 +47,7 @@ next_action_menu = [
     MenuOptions(2, "Exit Program")
 ]
 
-# Dictionary with Question as key and list of answers as values
+# Dictionary with Question as key and list of answers as values.
 question_options = {
     "How satisfied are you with your current job role?": [
         "Very Satisfied",
@@ -94,33 +94,33 @@ question_options = {
     ],
 }
 
-# Define the mapping of answers to scores.
+# Maps answers to scores.
 answers_mapping = {
-	"Very Satisfied": 5,
-	"Excellent": 5,
-	"Strongly Agree": 5,
-	"Very Effective": 5,
-	"Satisfied": 4,
-	"Good": 4,
-	"Agree": 4,
-	"Effective": 4,
-	"Neutral": 3,
-	"Average": 3,
-	"Dissatisfied": 2,
-	"Poor": 2,
-	"Disagree": 2,
-	"Ineffective": 2,
-	"Very Dissatisfied": 1,
-	"Very Poor": 1,
-	"Stronly Disagree": 1,
-	"Very Poor": 1,
-    "Very Ineffective": 1,   
+    "Very Satisfied": 5,
+    "Excellent": 5,
+    "Strongly Agree": 5,
+    "Very Effective": 5,
+    "Satisfied": 4,
+    "Good": 4,
+    "Agree": 4,
+    "Effective": 4,
+    "Neutral": 3,
+    "Average": 3,
+    "Dissatisfied": 2,
+    "Poor": 2,
+    "Disagree": 2,
+    "Ineffective": 2,
+    "Very Dissatisfied": 1,
+    "Very Poor": 1,
+    "Stronly Disagree": 1,
+    "Very Poor": 1,
+    "Very Ineffective": 1,
 }
 
 
 def display_title(title):
     """
-    Displays the provided menu title with decorative formatting.
+    Displays menu title with decorative formatting.
 
     """
     print("=" * 50)
@@ -145,14 +145,14 @@ def display_main_menu():
     display_title("                    MAIN MENU")
     display_options(main_menu)
     choice = get_user_choice(main_menu)
-    
-    # Dictionary to display and access options
+
+    # Dictionary to display and access options.
     choices = {
         1: ("Accessing Moodtracker Survey...\n", access_survey),
         2: ("Accessing Analysis Program...\n", display_analysis_menu),
         3: ("Exiting Program...", quit)
     }
-
+    # CREATE A NEW FUNCTION FOR THIS BLOC THAT REPEATS IN DIFFERENT FUNCTIONS?
     if choice in choices:
         print(choices[choice][0])
         choices[choice][1]()
@@ -160,10 +160,10 @@ def display_main_menu():
 
 def get_user_choice(options):
     """
-    Get the user's choice.
-    Verify if the input is valid.
+    Gets the user choice.
+    Verifies if the input is valid.
     """
-    # Prompt user for an options
+    # Prompts user for an option.
     while True:
         try:
             choice = int(
@@ -184,14 +184,13 @@ def access_survey():
     After submission, responses are displayed and saved to the worksheet.
     """
     display_title("           >>>>> YOUR VOICE MATTERS <<<<<")
-
     user_responses = {}
 
-    # Iterate over each question in the survey
+    # Iterates over each question in the survey.
     for question, answers in question_options.items():
         print(f"\n {question}")
 
-        # Display answers with index
+        # Displays answers possible with their index.
         for index, answer in enumerate(answers, 1):
             print(f"{index} - {answer}")
 
@@ -209,8 +208,8 @@ def access_survey():
 
 def update_worksheet(user_responses, survey):
     """
-    Convert the user's responses from a dictionary to a list format.
-    Update the worksheet with the user's answers.
+    Converts user responses from a dictionary to a list format.
+    Updates the worksheet with user answers.
     """
     print("\nUpdating...")
     responses_list = list(user_responses.values())
@@ -221,8 +220,8 @@ def update_worksheet(user_responses, survey):
 
 def next_action():
     """
-    Display options for next actions.
-    Allow user to choose one of the options.
+    Displays options for next actions.
+    Allows user to choose one of the options.
     """
     print()
     print("." * 50)
@@ -230,7 +229,7 @@ def next_action():
     display_options(next_action_menu)
     choice = get_user_choice(next_action_menu)
 
-    # Dictionary to display and access options
+    # Dictionary to display and access next action.
     choices = {
         1: ("Accessing to Main Menu...\n", display_main_menu),
         2: ("Exiting Program...", quit)
@@ -243,15 +242,15 @@ def next_action():
 
 def display_analysis_menu():
     """
-    Display Menu with options for each menu.
-    Take 2 parameters: the title and the options.
+    Displays the Analysis menu, handles user choice, and directs to next action
+    based on the selected option.
 
     """
     display_title("             >>> ANALYSIS PROGRAM <<<")
     display_options(analysis_menu)
     choice = get_user_choice(analysis_menu)
 
-    # Dictionary to display and access options
+    # Dictionary to display and access options.
     choices = {
         1: ("Accessing Summary Statistic...\n", summary_statistic),
         2: ("Accessing Top Satisfaction & Top Concerns...\n", top_analysis),
@@ -259,7 +258,6 @@ def display_analysis_menu():
         4: ("Exiting Program...", quit)
     }
 
-    # Create a new function for this bloc?
     if choice in choices:
         print(choices[choice][0])
         choices[choice][1]()
@@ -267,8 +265,8 @@ def display_analysis_menu():
 
 def get_survey_data():
     """
-    Retrieve survey data from survey_result worksheet.
-    Return Headers and rows in separate variables.
+    Retrieves survey data from worksheet.
+    Returns Headers and rows in separate variables.
     """
     data = survey.get_all_values()
     headers = data[0]
@@ -279,9 +277,9 @@ def get_survey_data():
 
 def summary_statistic():
     """
-    Display the Summary Statistic.
-    Get the data from the survey_result worksheet.
-    Generate for each question the number of answers received.
+    Displays the Summary Statistic.
+    Gets the data from the worksheet.
+    Generates for each question the number of answers received.
     """
     display_title("                 SUMMARY STATISTIC")
 
@@ -315,11 +313,12 @@ def summary_statistic():
 
     next_action()
 
+
 def top_analysis():
     """
-    Display the Top Satisfaction & Top Concerns.
-    Get the data from the survey_result worksheet.
-    Generate for each question a score based on the answers mapping sum.
+    Displays a Top Satisfaction & Top Concerns.
+    Gets the data from the worksheet.
+    Generates for each question a score based on the answers mapping sum.
     """
     display_title("          TOP SATISFACTION & TOP CONCERNS")
 
@@ -329,19 +328,24 @@ def top_analysis():
 
     for index, header in enumerate(headers):
         answers = [row[index] for row in rows]
-        
+
         total_score = 0
         for answer in answers:
-            score = answers_mapping.get(answer,0)
+            score = answers_mapping.get(answer, 0)
             total_score += score
-        
+
         survey_score[header] = total_score
-        sorted_score = sorted(survey_score.items(), key=lambda item: item[1], reverse = True)
+        sorted_score = sorted(
+            survey_score.items(),
+            key=lambda item: item[1],
+            reverse=True
+        )
 
     print("Survey results from highest to lowest score:\n")
     for question, score in sorted_score:
         print(f"- {question}: {score} / {max_score}")
 
     next_action()
+
 
 display_main_menu()
