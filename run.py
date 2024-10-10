@@ -249,7 +249,7 @@ def display_analysis_menu():
     """
     display_title("             >>> ANALYSIS PROGRAM <<<")
     display_options(analysis_menu)
-    choice = get_user_choice(main_menu)
+    choice = get_user_choice(analysis_menu)
 
     # Dictionary to display and access options
     choices = {
@@ -259,6 +259,7 @@ def display_analysis_menu():
         4: ("Exiting Program...", quit)
     }
 
+    # Create a new function for this bloc?
     if choice in choices:
         print(choices[choice][0])
         choices[choice][1]()
@@ -282,7 +283,7 @@ def summary_statistic():
     Get the data from the survey_result worksheet.
     Generate for each question the number of answers received.
     """
-    display_title("               SUMMARY STATISTIC")
+    display_title("                 SUMMARY STATISTIC")
 
     headers, rows, total_answers = get_survey_data()
     survey_data = {}
