@@ -144,17 +144,17 @@ def display_main_menu():
     display_title("                    MAIN MENU")
     display_options(main_menu)
     choice = get_user_choice(main_menu)
-
+    
     # Find a dynamic way to move to next action without hard coding
-    if choice == 1:
-        print("Accessing Moodtracker Survey...\n")
-        access_survey()
-    elif choice == 2:
-        print("Accessing Analysis Program...\n")
-        display_analysis_menu()
-    elif choice == 3:
-        print("Exiting Program...")
-        quit()
+    choices = {
+        1: ("Accessing Moodtracker Survey...\n", access_survey),
+        2: ("Accessing Analysis Program...\n", display_analysis_menu),
+        3: ("Exiting Program...", quit)
+    }
+
+    if choice in choices:
+        print(choices[choice][0])
+        choices[choice][1]()
 
 
 def get_user_choice(options):
