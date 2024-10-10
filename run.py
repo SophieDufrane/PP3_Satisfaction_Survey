@@ -38,7 +38,8 @@ main_menu = [
 analysis_menu = [
     MenuOptions(1, "Summary Statistic"),
     MenuOptions(2, "Top Satisfaction & Top Concerns"),
-    MenuOptions(3, "Back to Main Menu")
+    MenuOptions(3, "Back to Main Menu"),
+    MenuOptions(4, "Exit Program")
 ]
 
 next_action_menu = [
@@ -145,7 +146,7 @@ def display_main_menu():
     display_options(main_menu)
     choice = get_user_choice(main_menu)
     
-    # Find a dynamic way to move to next action without hard coding
+    # Dictionary to display and access options
     choices = {
         1: ("Accessing Moodtracker Survey...\n", access_survey),
         2: ("Accessing Analysis Program...\n", display_analysis_menu),
@@ -229,13 +230,15 @@ def next_action():
     display_options(next_action_menu)
     choice = get_user_choice(next_action_menu)
 
-    # Find a dynamic way to move to next action without hard coding
-    if choice == 1:
-        print("Accessing to Main Menu...\n")
-        display_main_menu()
-    elif choice == 2:
-        print("Exiting Program...")
-        quit()
+    # Dictionary to display and access options
+    choices = {
+        1: ("Accessing to Main Menu...\n", display_main_menu),
+        2: ("Exiting Program...", quit)
+    }
+
+    if choice in choices:
+        print(choices[choice][0])
+        choices[choice][1]()
 
 
 def display_analysis_menu():
@@ -248,16 +251,17 @@ def display_analysis_menu():
     display_options(analysis_menu)
     choice = get_user_choice(main_menu)
 
-    # Find a dynamic way to move to next action without hard coding
-    if choice == 1:
-        print("Accessing Summary Statistic...\n")
-        summary_statistic()
-    elif choice == 2:
-        print("Accessing Top Satisfaction & Top Concerns...\n")
-        top_analysis()
-    elif choice == 3:
-        print("Back to Main Menu...")
-        display_main_menu()
+    # Dictionary to display and access options
+    choices = {
+        1: ("Accessing Summary Statistic...\n", summary_statistic),
+        2: ("Accessing Top Satisfaction & Top Concerns...\n", top_analysis),
+        3: ("Back to Main Menu...\n", display_main_menu),
+        4: ("Exiting Program...", quit)
+    }
+
+    if choice in choices:
+        print(choices[choice][0])
+        choices[choice][1]()
 
 
 def get_survey_data():
