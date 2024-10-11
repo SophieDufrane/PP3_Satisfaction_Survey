@@ -140,10 +140,9 @@ During development, I used [Python Tutor](https://pythontutor.com/visualize.html
 
 ![BeforeRefactoring](media/repetition_ex2.png)
 
-  - *After Refactoring*: I created 2 generic functions to handle the display of the title, and separatly the display of the options. These functions can be reused across different sections independently.
+  - *After Refactoring*: I created two generic functions to separately handle the display of the title and the display of the options for each Menu. Next, I applied the same approach to how each function handled user input and called the next action. These functions are now reusable across different sections independently.
 
 ![AfterRefactoring](media/repetition_after_ex2.png)
-
 
 ### PEP8 validation
 

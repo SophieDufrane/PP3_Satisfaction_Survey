@@ -236,9 +236,7 @@ def next_action():
         2: ("Exiting Program...", quit),
     }
 
-    if choice in choices:
-        print(choices[choice][0])
-        choices[choice][1]()
+    handle_choice(choice, choices)
 
 
 def display_analysis_menu():
@@ -258,10 +256,8 @@ def display_analysis_menu():
         3: ("Back to Main Menu...\n", display_main_menu),
         4: ("Exiting Program...", quit),
     }
-
-    if choice in choices:
-        print(choices[choice][0])
-        choices[choice][1]()
+    
+    handle_choice(choice, choices)
 
 
 def get_survey_data():
