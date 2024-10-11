@@ -22,7 +22,7 @@ To define the structure of the program, I started by working with a flowchart on
 
 By using a flowchart, I wanted to ensure a smooth, logical flow of data throughout.
 
-![Flowchart](media/flowcharts.png)
+![Flowchart](media/flowcharts.webp)
 
 ### Existing Features:
 
@@ -36,7 +36,7 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
   - **Input Validation**: User inputs are validated to ensure that only valid options are accepted. If an invalid option is entered, the user is prompted to try again.
   - **User Flow**: The program allows users to easily navigate between sections.
 
-![MainMenu](media/main_menu.png)
+![MainMenu](media/main_menu.webp)
 
 **Moodtracker Survey**
 
@@ -52,11 +52,11 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 
 - *User Experience*: The survey design is quite simple and user-friendly, guiding employees through the process seamlessly. Prompts and clear instructions make it easy for users to navigate and complete the survey.
 
-![Survey](media/survey.png)
+![Survey](media/survey.webp)
 
-![SurveySummary](media/survey_summary.png)
+![SurveySummary](media/survey_summary.webp)
 
-![NextAction](media/next_action.png)
+![NextAction](media/next_action.webp)
 
 **Analysis Program**
 
@@ -73,11 +73,11 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 
 - *User Experience*: This section has been designed to give HR professionals and managers quick access to meaningful statistics, making decision-making more informed and efficient.
 
-![AnalysisMenu](media/analysis_menu.png)
+![AnalysisMenu](media/analysis_menu.webp)
 
-![SummaryAnalysis](media/summary_stat.png)
+![SummaryAnalysis](media/summary_stat.webp)
 
-![Tops](media/tops.png)
+![Tops](media/tops.webp)
 
 ### Features left to implement:
 
@@ -138,11 +138,11 @@ During development, I used [Python Tutor](https://pythontutor.com/visualize.html
 - **Avoiding repetitions**
   - *Before Refactoring*: Despite the `MenuOptions` class, I noticed that I was still repeating similar blocks of code to display Menu titles and options. For example, the Main menu and Analysis menu had nearly identical code for introducing the section.
 
-![BeforeRefactoring](media/repetition_ex2.png)
+![BeforeRefactoring](media/analysis_menu_before_refactoring.webp)
 
   - *After Refactoring*: I created two generic functions to separately handle the display of the title and the display of the options for each Menu. Next, I applied the same approach to how each function handled user input and called the next action. These functions are now reusable across different sections independently.
 
-![AfterRefactoring](media/repetition_after_ex2.png)
+![AfterRefactoring](media/analysis_menu_after_refactoring.webp)
 
 ### PEP8 validation
 
@@ -208,7 +208,7 @@ The idea for this project was inspired by [Workhuman](https://www.workhuman.com/
 - [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1): 
   - This *Code Institute* project provided guidance on how to implement the integration with *Google Sheets*. Specifically, the setup for `gspread` and Credentials authentication was adapted from this project.
   - For example, the code handling *Google Sheets* authentication and updating (in the `update_worksheet` and `get_survey_data` functions) was based on *Love Sandwiches* but modified to suit the needs of this Moodtracker project. These modifications included adjusting for different worksheet names and data formatting for survey responses. 
-  - Validation Logic (while True, Try Except........................)
+  - The validation logic using a `while True` loop with `try-except` for user input was also adapted from the *Love Sandwiches* project. This logic was reused and slightly modified to handle different menu options and return selections based on this project's requirements.
 - [Python Tutor](https://pythontutor.com/visualize.html#mode=edit): 
   - This online tool was used to visualize and debug blocks of Python code, helping to ensure the logic was correct throughout development.
 - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/), [Flake8](https://flake8.pycqa.org/en/latest/) and [Black](https://pypi.org/project/black/): 
