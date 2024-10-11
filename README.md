@@ -158,7 +158,7 @@ Using flake8 first was beneficial because it allowed me to understand the specif
 
 ### Deployment Steps
 
-The site was deployed successfully to *Heroku* following the steps below:
+The site was deployed successfully to [Heroku](https://www.heroku.com/github-students/signup) following the steps below:
 
 1. Ensure that the `run.py` file is conform before deployment:
     - Add `\n` at the end of any inputs.
@@ -185,15 +185,21 @@ The site was deployed successfully to *Heroku* following the steps below:
 
 The live link can be found here: [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/)
 
-### Content
+### Inspiration
 
-- Inspiration: [Workhuman](https://www.workhuman.com/)
-
-
-### Credits
-- The integration with *Google Sheets* was implemented using code examples from the  [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1) *Code Institute*
-
+The idea for this project was inspired by [Workhuman](https://www.workhuman.com/), a company that offers solutions to improve employee engagement and feedback mechanisms. 
 
 ### External Libraries
+
 - `gspread`: Used to interact with *Google Sheets*. This library was essential for retrieving and storing survey responses in real-time, allowing the application to dynamically update and analyze survey data directly from the Google Sheets document.
 - `google.oauth2`: Used for authenticating access to *Google Sheets* via service account credentials. This library was crucial for secure and authorized access to the Google Sheets API, ensuring that only authorized users can read or write data to the survey spreadsheet.
+
+### Resources
+
+- [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1): This *Code Institute* project gave me guidance on how to implement the integration with *Google Sheets*. 
+- [Python Tutor](https://pythontutor.com/visualize.html#mode=edit): This online tool used to visualize and debug blocks of Python code, helping to ensure the logic was correct throughout development.
+- [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/), [Flake8](https://flake8.pycqa.org/en/latest/) and [Black](https://pypi.org/project/black/): Resources on PEP8 compliance and automatic code formatting.
+- [Functions vs Classes: When to Use Which and Why?](https://www.youtube.com/watch?v=txRTzljmV0Q): This video clarified when to use functions versus classes, which helped me apply course concepts effectively in the project.
+- [List Comprehension](https://www.learndatasci.com/solutions/python-list-comprehension/): This resource deepened my understanding of list comprehension and its efficient usage in Python.
+- [Lambda function](https://www.geeksforgeeks.org/ways-sort-list-dictionaries-values-python-using-lambda-function/): This article guided me in using lambda functions to sort lists of dictionaries, enhancing my handling of data structures.
+
