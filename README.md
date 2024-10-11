@@ -1,4 +1,4 @@
-# Moodtracker - A modern Voice of the Employee tool.
+# Moodtracker - Keep a continuous pulse on your people.
 
 The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at *Workhuman*, the company I work for. This tool is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
 

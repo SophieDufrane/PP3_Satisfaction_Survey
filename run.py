@@ -18,7 +18,7 @@ survey = SHEET.worksheet("survey_result")
 
 class MenuOptions:
     """
-    Display the Menus Options, with an index and description.
+    Displays the Menus Options, with an index and description.
     """
 
     def __init__(self, index, option):
@@ -118,7 +118,6 @@ answers_mapping = {
 def display_title(title):
     """
     Displays menu title with decorative formatting.
-
     """
     print("=" * 50)
     print(f"{title}")
@@ -128,10 +127,37 @@ def display_title(title):
 def display_options(menu_options):
     """
     Displays the list of menu options.
-
     """
     for option in menu_options:
         print(option.display_menu())
+
+
+def get_user_choice(options):
+    """
+    Gets the user choice.
+    Verifies if the input is valid.
+    """
+    # Prompts user to select an option until valid input entered.
+    while True:
+        try:
+            choice = int(input(f"\nPlease enter your selection (1-{len(options)}):\n"))
+            if 1 <= choice <= len(options):
+                return choice
+            else:
+                raise ValueError("Invalid selection.")
+
+        except ValueError as e:
+            print(f"{e}, please try again.")
+
+
+def handle_choice(choice, choices):
+    """
+    Checks if the user choice is in the available options.
+    Prints the description and call associated function.
+    """
+    if choice in choices:
+        print(choices[choice][0])
+        choices[choice][1]()
 
 
 def display_main_menu():
@@ -149,28 +175,8 @@ def display_main_menu():
         2: ("Accessing Analysis Program...\n", display_analysis_menu),
         3: ("Exiting Program...", quit),
     }
-    # CREATE A NEW FUNCTION FOR THIS BLOC THAT REPEATS IN DIFFERENT FUNCTIONS?
-    if choice in choices:
-        print(choices[choice][0])
-        choices[choice][1]()
-
-
-def get_user_choice(options):
-    """
-    Gets the user choice.
-    Verifies if the input is valid.
-    """
-    # Prompts user for an option.
-    while True:
-        try:
-            choice = int(input(f"\nPlease enter your selection (1-{len(options)}):\n"))
-            if 1 <= choice <= len(options):
-                return choice
-            else:
-                raise ValueError("Invalid selection.")
-
-        except ValueError as e:
-            print(f"{e}, please try again.")
+    
+    handle_choice(choice, choices)
 
 
 def access_survey():
