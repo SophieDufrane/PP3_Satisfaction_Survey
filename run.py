@@ -32,20 +32,17 @@ class MenuOptions:
 main_menu = [
     MenuOptions(1, "Access to Survey"),
     MenuOptions(2, "Access to Analysis Program"),
-    MenuOptions(3, "Exit Program")
+    MenuOptions(3, "Exit Program"),
 ]
 
 analysis_menu = [
     MenuOptions(1, "Summary Statistic"),
     MenuOptions(2, "Top Satisfaction & Top Concerns"),
     MenuOptions(3, "Back to Main Menu"),
-    MenuOptions(4, "Exit Program")
+    MenuOptions(4, "Exit Program"),
 ]
 
-next_action_menu = [
-    MenuOptions(1, "Back to Main Menu"),
-    MenuOptions(2, "Exit Program")
-]
+next_action_menu = [MenuOptions(1, "Back to Main Menu"), MenuOptions(2, "Exit Program")]
 
 # Dictionary with Question as key and list of answers as values.
 question_options = {
@@ -150,7 +147,7 @@ def display_main_menu():
     choices = {
         1: ("Accessing Moodtracker Survey...\n", access_survey),
         2: ("Accessing Analysis Program...\n", display_analysis_menu),
-        3: ("Exiting Program...", quit)
+        3: ("Exiting Program...", quit),
     }
     # CREATE A NEW FUNCTION FOR THIS BLOC THAT REPEATS IN DIFFERENT FUNCTIONS?
     if choice in choices:
@@ -166,9 +163,7 @@ def get_user_choice(options):
     # Prompts user for an option.
     while True:
         try:
-            choice = int(
-                input(f"\nPlease enter your selection (1-{len(options)}):\n")
-                )
+            choice = int(input(f"\nPlease enter your selection (1-{len(options)}):\n"))
             if 1 <= choice <= len(options):
                 return choice
             else:
@@ -232,7 +227,7 @@ def next_action():
     # Dictionary to display and access next action.
     choices = {
         1: ("Accessing to Main Menu...\n", display_main_menu),
-        2: ("Exiting Program...", quit)
+        2: ("Exiting Program...", quit),
     }
 
     if choice in choices:
@@ -255,7 +250,7 @@ def display_analysis_menu():
         1: ("Accessing Summary Statistic...\n", summary_statistic),
         2: ("Accessing Top Satisfaction & Top Concerns...\n", top_analysis),
         3: ("Back to Main Menu...\n", display_main_menu),
-        4: ("Exiting Program...", quit)
+        4: ("Exiting Program...", quit),
     }
 
     if choice in choices:
@@ -336,9 +331,7 @@ def top_analysis():
 
         survey_score[header] = total_score
         sorted_score = sorted(
-            survey_score.items(),
-            key=lambda item: item[1],
-            reverse=True
+            survey_score.items(), key=lambda item: item[1], reverse=True
         )
 
     print("Survey results from highest to lowest score:\n")
