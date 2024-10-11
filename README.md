@@ -28,23 +28,29 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 
 **Main Menu**
 
-- *Overview*: The Main Menu serves as a starting point for navigating between different sections of the program, allowing users to easily choose between starting the survey or accessing the analysis tools.
+- *Overview*: The Main Menu serves as a starting point for navigating the program.
+
 - *Features*:
-  - Clear Option Presentation: The menu presents the available options in a simple, easy-to-read format.
-  - Input Validation: User inputs are validated to ensure that the selected menu options are valid. If an incorrect option is entered, the program will prompt the user to try again.
-  - User Flow: The flow from the main menu to other parts of the program is intuitive, providing a seamless experience.
+  - **Clear Option Presentation**: The menu presents the available options in a simple, easy-to-read format.
+    - Menu Handlin: Menu options are managed using a `MenuOptions` class. This allows for flexibility, as the same code is used for different menus. A `for` loop is used to iterate over the list of options and display them, making the code more modular and easier to maintain.
+  - **Input Validation**: User inputs are validated to ensure that only valid options are accepted. If an invalid option is entered, the user is prompted to try again.
+  - **User Flow**: The program allows users to easily navigate between sections.
 
 ![MainMenu](media/main_menu.png)
 
 **Moodtracker Survey**
 
-- *Goal*: To collect employee satisfaction levels, ensuring that employees feel heard and valued within the organisation. This tool offers a simple and engaging way for employees to provide feedback regurlarly, on different aspects of their job and work environment.
+- *Goal*: To collect employee satisfaction levels. This tool offers a simple and engaging way for employees to provide feedback regurlarly, on different aspects of the work environment.
+
 - *Features*:
-  - Question Display: Employees are presented with one question at a time, allowing them to focus and provide thoughtful responses.
-  - Input Validation: The program ensures that all responses are valid by checking inputs. If an invalid input is detected, users are prompted to enter a correct value.
-  - User Experience: The survey design is quite simple and user-friendly, guiding employees through the process seamlessly. Prompts and clear instructions make it easy for users to navigate and complete the survey.
-  - Summary: Displays user responses at the end of the survey, providing a clear overview of what will be recorded.
-  - Next Action: The program presents options to move to another section.
+  - **Question Display**: The survey presents one question at a time, allowing employees to provide thoughtful responses.
+    - Survey Logic: The survey uses dictionaries to store questions and possible answers. Each question is a 'key,' and the possible answers are the 'values.' This structure made it easy to add more questions later (which I did after working with a shorter sample to test the function).
+  - **Input Validation**: The program ensures that all inputs are valid.
+    - Validation Logic: Input validation is managed using a `while` loop and `try-except` block. The `try` block checks if the input is a valid integer within the expected range. If not, an exception is raised, and the user is prompted to enter a correct value.
+  - **Summary**: Displays user responses at the end of the survey, providing a clear overview of what will be recorded.
+  - **Next Action**: After the survey, users can return to the main menu or exit the program.
+
+- *User Experience*: The survey design is quite simple and user-friendly, guiding employees through the process seamlessly. Prompts and clear instructions make it easy for users to navigate and complete the survey.
 
 ![Survey](media/survey.png)
 
@@ -54,14 +60,18 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 
 **Analysis Program**
 
-- *Goal*: To provide insightful data analysis from a large panel of employee responses, empowering Human Ressources and managers with actionable insights.
+- *Goal*: To provide insightful data analysis from a large panel of employee responses to Human Ressources and managers.
+
 - *Feature*: 
-  - Interactive Menu: The analysis section offers a easy-to-navigate menu with multiple options, enabling users to explore survey results in detail.
-  - Input Validation: Similar to the survey section, user choices are validated. If an invalid selection is made, the program prompts the user to choose a valid option.
-  - User Experience: This section has been designed to give HR professionals and managers quick access to meaningful statistics, making decision-making more informed and efficient.
-  - Summary Analysis: Provides an overview of the survey results, displaying the count of responses and the percentage breakdown for each answer by question/topic.
-  - Top Satisfaction and Top Concerns: Offers a sorted view, highlighting the highest satisfaction levels down to the most pressing concerns.
-  - Next Action: The program presents options to move to another section.
+  - **Interactive Menu**: The analysis section offers a easy-to-navigate menu with multiple options to explore survey results in detail.
+  - **Input Validation**: Similar to the survey section, user inputs are validated.
+  - **Summary Analysis**: Provides an overview of survey responses.
+    - Responses are counted and stored in a dictionary. These counts are converted into percentages by dividing by the total number of responses, giving a clear picture of how employees feel.
+  - **Top Satisfaction and Top Concerns**: Shows the most and least favorable areas.
+    - Sorting Logic: The analysis program uses lambda functions to sort questions by satisfaction scores (e.g., "Very Satisfied" = 5 points).
+  - **Next Action**: After analysis, users can return to the main menu or exit.
+
+- *User Experience*: This section has been designed to give HR professionals and managers quick access to meaningful statistics, making decision-making more informed and efficient.
 
 ![AnalysisMenu](media/analysis_menu.png)
 
@@ -79,54 +89,54 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 
 ## Manual Testing:
 
-During development, I used [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) to break down and visualize small blocks of code. This tool allowed me to verify the step-by-step execution of the program, catching issues early and confirming that the logic worked as expected.
+During development, I used [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) to break down and visualize small blocks of code. This tool allowed me to test the execution of the program, catching issues and confirming when the logic worked as expected.
 
 ***Key Tests, Bugs and fixs:***
 
 - **API and Google Sheets Integration**
-  - *Expected*: The program retrieves data from the survey_result worksheet upon execution.
-  - *Testing*: Ran run.py in the terminal.
-  - *Result*: Data was retrieved and displayed as expected.
+  - *Expected*: The program retrieves data from the survey_result worksheet.
+  - *Testing*: Added a print() statement to display the retrieved data, then ran run.py in the terminal.
+  - *Result*: The data was retrieved from the correct worksheet and displayed in the terminal without errors.
 
 - **Main Menu Input Validation**
-  - *Expected*: The program should only accept valid inputs (1, 2, or 3) and provide access to the choosen section. Invalid inputs should trigger an error message prompting the user to try again.
+  - *Expected*: The program only accepts valid inputs (1, 2, or 3) and provide access to the choosen section. Invalid inputs should trigger an error message prompting the user to try again.
   - *Testing*: Ran run.py in the terminal, testing valid and invalid inputs.
-  - *Result*: The program correctly processed valid inputs, allowing access to the selected section. Invalid inputs displayed an appropriate error message.
+  - *Result*: The program correctly processed valid inputs, allowing access to the selected section. Invalid inputs displayed the error message.
 
 - **Main Menu Display with Class and Dictionary**
-  - *Expected*: The menu options should display in correct order (1, 2, 3) along with the section names.
-  - *Testing*: Ran run.py in the terminal.
+  - *Expected*: The menu options display in correct order (1, 2, 3) along with their respective section names.
+  - *Testing*: Added a print() statement to display the set used for storing menu options then ran run.py in the terminal.
   - *Result*: The options were displayed in reverse order (3 to 1).
   - *Fix*: To maintain the correct order, I replaced the set used for storing menu options with a dictionary, which preserves the insertion order.
 
 - **Survey Display**
-  - *Expected*: The program should display survey questions one at a time, allowing users to input their answers before moving to the next question.
+  - *Expected*: The program displays questions one at a time, allowing user to select their answers before moving to the next question.
   - *Testing*: Ran run.py in the terminal to simulate the survey.
-  - *Result*: All questions were displayed simultaneously instead of one by one.
-  - *Fix*: The input prompt for user answers was placed outside the loop, causing all questions to appear at once. I moved the input prompt inside the loop, ensuring each question was displayed individually, and the program waited for user input before proceeding to the next question.
+  - *Result*: All questions were displayed simultaneously.
+  - *Fix*: The input for user answers was placed outside the loop, causing all questions to appear at once. I moved the input inside the loop so the program waited for user input before moving to the next question.
 
 - **Survey responses**
-  - *Expected*: User responses should be collected and displayed in a summary to verify accuracy.
+  - *Expected*: User responses to be collected and displayed in a summary.
   - *Testing*: Ran run.py and submitted answers to test the response collection.
   - *Result*: Incorrect responses were displayed (e.g., "Satisfied" instead of "Very Satisfied").
-  - *Fix*: The issue stemmed from zero-based indexing in the list of answers. By subtracting 1 from the user's choice, I ensured the correct answer was selected. Additionally, I noticed a variable name conflict in the final print loop (`answers` was reused), which confused the program. Renaming it to  `selected_answer` clarified the output.
+  - *Fix*: The issue came from the indexing in the list of answers (zero-based). By subtracting 1 from user choice, I ensured the correct answer was selected. Additionally, I noticed a variable name conflict in the final print loop (`answers` was reused), so I renamed it to `selected_answer` to clarify.
 
 - **Analysis Menu**
   - *Expected*: Displays analysis options in the correct order (1, 2, 3).
   - *Testing*: Ran run.py and checked the order of the menu display.
   - *Result*: The menu options were displayed in reverse (3 to 1).
-  - *Fix*: Similar to the main menu, I switched to using a dictionary to preserve the correct order. I also corrected a prompt issue by passing the correct variable (`analysis_menu`) to the `get_user_choice` function instead of `main_menu`.
+  - *Fix*: Similar to the main menu, I switched to using a dictionary to preserve the correct order. I also corrected an issue by passing the correct variable `analysis_menu` to the `get_user_choice` function instead of `main_menu`.
 
 
 ## Refactoring Process: Improving Efficiency and Readability
 
 - **Menu Handling Logic**
-  - *Before Refactoring*: Initially, I had separate functions for handling different parts of the program (like the main menu and the analysis menu). Each had its own logic to display options and get user input, which was repetitive.
+  - *Before Refactoring*: Initially, I had separate functions for handling different parts of the program. Each had its own logic to display options and get user input, which was repetitive.
 
-  - *After Refactoring*: I created a more generic MenuOptions class that could be reused for all menus. With this in place, I only need to define the options in one place and could reuse the same functions for handling the display across multiple menus, reducing duplication.
+  - *After Refactoring*: I created a more generic `MenuOptions` class that could be reused for all menus. With this in place, I only need to define the options and could reuse the same functions for handling the display across multiple menus, reducing duplication.
 
 - **Avoiding repetitions**
-  -  *Before Refactoring*: Despite the MenuOptions class, I noticed that I was still repeating similar blocks of code in multiple parts of the project to display Menu titles and options. For example, both the Main menu and Analysis menu had nearly identical code for introducing the section.
+  - *Before Refactoring*: Despite the `MenuOptions` class, I noticed that I was still repeating similar blocks of code to display Menu titles and options. For example, the Main menu and Analysis menu had nearly identical code for introducing the section.
 
 ![BeforeRefactoring](media/repetition_ex2.png)
 
@@ -196,10 +206,18 @@ The idea for this project was inspired by [Workhuman](https://www.workhuman.com/
 
 ### Resources
 
-- [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1): This *Code Institute* project gave me guidance on how to implement the integration with *Google Sheets*. 
-- [Python Tutor](https://pythontutor.com/visualize.html#mode=edit): This online tool used to visualize and debug blocks of Python code, helping to ensure the logic was correct throughout development.
-- [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/), [Flake8](https://flake8.pycqa.org/en/latest/) and [Black](https://pypi.org/project/black/): Resources on PEP8 compliance and automatic code formatting.
-- [Functions vs Classes: When to Use Which and Why?](https://www.youtube.com/watch?v=txRTzljmV0Q): This video clarified when to use functions versus classes, which helped me apply course concepts effectively in the project.
-- [List Comprehension](https://www.learndatasci.com/solutions/python-list-comprehension/): This resource deepened my understanding of list comprehension and its efficient usage in Python.
-- [Lambda function](https://www.geeksforgeeks.org/ways-sort-list-dictionaries-values-python-using-lambda-function/): This article guided me in using lambda functions to sort lists of dictionaries, enhancing my handling of data structures.
+- [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1): 
+  - This *Code Institute* project provided guidance on how to implement the integration with *Google Sheets*. Specifically, the setup for `gspread` and Credentials authentication was adapted from this project.
+  - For example, the code handling *Google Sheets* authentication and updating (in the `update_worksheet` and `get_survey_data` functions) was based on *Love Sandwiches* but modified to suit the needs of this Moodtracker project. These modifications included adjusting for different worksheet names and data formatting for survey responses. 
+  - Validation Logic (while True, Try Except........................)
+- [Python Tutor](https://pythontutor.com/visualize.html#mode=edit): 
+  - This online tool was used to visualize and debug blocks of Python code, helping to ensure the logic was correct throughout development.
+- [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/), [Flake8](https://flake8.pycqa.org/en/latest/) and [Black](https://pypi.org/project/black/): 
+  - These resources were used for code formatting and validation according to Python standards. Flake8 was initially used for style error detection, while Black was employed for automated code formatting.
+- [Functions vs Classes: When to Use Which and Why?](https://www.youtube.com/watch?v=txRTzljmV0Q):
+  - This video helped me understand when to use functions and when to use classes, which made it easier to apply these concepts in my project.
+- [List Comprehension](https://www.learndatasci.com/solutions/python-list-comprehension/):
+  - This resource deepened my understanding of list comprehension and its efficient usage in Python.
+- [Lambda function](https://www.geeksforgeeks.org/ways-sort-list-dictionaries-values-python-using-lambda-function/):
+  - This article showed me how to use lambda functions to sort lists of dictionaries, which helped me work better with data structures..
 
