@@ -42,7 +42,11 @@ analysis_menu = [
     MenuOptions(4, "Exit Program"),
 ]
 
-next_action_menu = [MenuOptions(1, "Back to Main Menu"), MenuOptions(2, "Exit Program")]
+next_action_menu = [
+    MenuOptions(1, "Back to Main Menu"),
+    MenuOptions(2, "Back to Analysis Menu"),
+    MenuOptions(3, "Exit Program"),
+]
 
 # Dictionary with Question as key and list of answers as values.
 question_options = {
@@ -233,7 +237,8 @@ def next_action():
     # Dictionary to display and access next action.
     choices = {
         1: ("Accessing to Main Menu...\n", display_main_menu),
-        2: ("Exiting Program...", quit),
+        2: ("Accessing to Analysis Menu...\n", display_analysis_menu),
+        3: ("Exiting Program...", quit),
     }
 
     handle_choice(choice, choices)
