@@ -342,11 +342,12 @@ def top_analysis():
             survey_score.items(), key=lambda item: item[1], reverse=True
         )
 
-    print("Survey results from highest to lowest score:\n")
+    print("Survey results ranked from highest to lowest satisfaction score:\n")
     for question, score in sorted_score:
-        print(f"- {question}: {score} / {max_score}")
+        percentage = round((score / max_score) * 100, 1)
+        print(f"- {question.upper()}: {percentage}% satisfaction")
 
     next_action()
 
-if __init__ == "__main__":
+if __name__ == "__main__":
     display_main_menu()
