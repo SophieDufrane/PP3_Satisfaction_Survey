@@ -169,6 +169,7 @@ def display_main_menu():
     Displays the main menu, handles user choice, and directs to next action
     based on the selected option.
     """
+    # Add extra spaces to center the title.
     display_title("                    MAIN MENU")
     display_options(MAIN_MENU)
     choice = get_user_choice(MAIN_MENU)
@@ -347,5 +348,5 @@ def top_analysis():
 
     next_action()
 
-
-display_main_menu()
+if __init__ == "__main__":
+    display_main_menu()
