@@ -18,14 +18,24 @@ SURVEY = SHEET.worksheet("survey_result")
 
 class MenuOptions:
     """
-    Displays the Menus Options, with an index and description.
+    Displays the Menus Options, with an index for each option.
     """
 
     def __init__(self, index, option):
+        """
+        Initialises a MenuOptions instance with an index and option description.
+        
+        Args:
+        index (int): The number representing the option.
+        option (str): A string description of the option.
+        """
         self.index = index
         self.option = option
 
     def display_menu_options(self):
+        """
+        Returns a formatted string for displaying menu options
+        """
         return f"{self.index} - {self.option}"
 
 
@@ -122,6 +132,9 @@ ANSWERS_MAPPING = {
 def display_title(title):
     """
     Displays menu title with decorative formatting.
+
+    Args:
+    title (str): The Menu title to be displayed.
     """
     print("=" * 50)
     print(title)
@@ -131,6 +144,9 @@ def display_title(title):
 def display_options(menu_options):
     """
     Displays the list of menu options.
+
+    Args:
+    menu_options (list): A list of MenuOptions objects to be displayed.
     """
     for option in menu_options:
         print(option.display_menu_options())
@@ -138,8 +154,13 @@ def display_options(menu_options):
 
 def get_user_choice(options):
     """
-    Gets the user choice.
-    Verifies if the input is valid.
+    Gets and validates the user selection from the list of options.
+    
+    Args:
+    options (list): The list of available Menu options.
+
+    Returns:
+    int: The validated user selection as an integer.
     """
     # Prompts user to select an option until valid input entered.
     while True:
@@ -148,16 +169,19 @@ def get_user_choice(options):
             if 1 <= choice <= len(options):
                 return choice
             else:
-                raise ValueError("Invalid selection.")
+                raise ValueError("Invalid selection. Please choose a number within the range.")
 
-        except ValueError as e:
-            print(f"{e}, please try again.")
+        except ValueError:
+            print("Invalid selection, please try again.")
 
 
 def handle_choice(choice, choices):
     """
-    Checks if the user choice is in the available options.
-    Prints the description and call associated function.
+    Handles the user choice by displaying a message and executing the associated function.
+
+    Args:
+    choice (int): The user selected choice.
+    choices (dict): Dictionary mapping the choice number to a tuple (description, function)
     """
     if choice in choices:
         print(choices[choice][0])
@@ -166,8 +190,7 @@ def handle_choice(choice, choices):
 
 def display_main_menu():
     """
-    Displays the main menu, handles user choice, and directs to next action
-    based on the selected option.
+    Displays the main menu, handles user choice, and directs to next action.
     """
     # Add extra spaces to center the title.
     display_title("                    MAIN MENU")
@@ -186,8 +209,7 @@ def display_main_menu():
 
 def access_survey():
     """
-    Displays the survey questions, collects user responses, and stores them.
-    After submission, responses are displayed and saved to the worksheet.
+    Displays the survey questions, collects user responses, and updates the worksheet.
     """
     display_title("           >>>>> YOUR VOICE MATTERS <<<<<")
     user_responses = {}
@@ -214,8 +236,11 @@ def access_survey():
 
 def update_worksheet(user_responses, SURVEY):
     """
-    Converts user responses from a dictionary to a list format.
-    Updates the worksheet with user answers.
+    Updates the Google worksheet with user responses.
+
+    Args:
+    user_responses (dict): Dictionary of survey questions and user responses.
+    SURVEY (gspread.Worksheet): Worksheet to append the responses to.
     """
     print("\nUpdating...")
     responses_list = list(user_responses.values())
@@ -226,8 +251,7 @@ def update_worksheet(user_responses, SURVEY):
 
 def next_action():
     """
-    Displays options for next actions.
-    Allows user to choose one of the options.
+    Displays options for next action.
     """
     print()
     print("." * 50)
@@ -247,8 +271,7 @@ def next_action():
 
 def display_analysis_menu():
     """
-    Displays the Analysis menu, handles user choice, and directs to next action
-    based on the selected option.
+    Displays the Analysis menu and handles user choice for analysis options.
 
     """
     display_title("             >>> ANALYSIS PROGRAM <<<")
@@ -269,7 +292,9 @@ def display_analysis_menu():
 def get_survey_data():
     """
     Retrieves survey data from worksheet.
-    Returns Headers and rows in separate variables.
+    
+    Returns:
+    tuple: Tuple containing the headers, rows of data, and total count of answers.
     """
     data = SURVEY.get_all_values()
     headers = data[0]
@@ -280,9 +305,7 @@ def get_survey_data():
 
 def summary_statistic():
     """
-    Displays the Summary Statistic.
-    Gets the data from the worksheet.
-    Generates for each question the number of answers received.
+    Displays a summary of the survey statistic, showing percentage of each response for every question.
     """
     display_title("                 SUMMARY STATISTIC")
 
@@ -319,9 +342,8 @@ def summary_statistic():
 
 def top_analysis():
     """
-    Displays a Top Satisfaction & Top Concerns.
-    Gets the data from the worksheet.
-    Generates for each question a score based on the answers mapping sum.
+    Displays the Top Satisfaction & Top Concerns based on survey scores.
+    For each question, the function calculates a score based on the sum of mapped answers.
     """
     display_title("          TOP SATISFACTION & TOP CONCERNS")
 
