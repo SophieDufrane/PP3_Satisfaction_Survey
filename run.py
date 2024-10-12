@@ -13,7 +13,7 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("satisfaction-survey")
-survey = SHEET.worksheet("survey_result")
+SURVEY = SHEET.worksheet("survey_result")
 
 
 class MenuOptions:
@@ -25,31 +25,31 @@ class MenuOptions:
         self.index = index
         self.option = option
 
-    def display_menu(self):
+    def display_menu_options(self):
         return f"{self.index} - {self.option}"
 
 
-main_menu = [
+MAIN_MENU = [
     MenuOptions(1, "Access to Survey"),
     MenuOptions(2, "Access to Analysis Program"),
     MenuOptions(3, "Exit Program"),
 ]
 
-analysis_menu = [
+ANALYSIS_MENU = [
     MenuOptions(1, "Summary Statistic"),
     MenuOptions(2, "Top Satisfaction & Top Concerns"),
     MenuOptions(3, "Back to Main Menu"),
     MenuOptions(4, "Exit Program"),
 ]
 
-next_action_menu = [
+NEXT_ACTION_MENU = [
     MenuOptions(1, "Back to Main Menu"),
     MenuOptions(2, "Back to Analysis Menu"),
     MenuOptions(3, "Exit Program"),
 ]
 
 # Dictionary with Question as key and list of answers as values.
-question_options = {
+QUESTION_OPTIONS = {
     "How satisfied are you with your current job role?": [
         "Very Satisfied",
         "Satisfied",
@@ -96,7 +96,7 @@ question_options = {
 }
 
 # Maps answers to scores.
-answers_mapping = {
+ANSWERS_MAPPING = {
     "Very Satisfied": 5,
     "Excellent": 5,
     "Strongly Agree": 5,
@@ -124,7 +124,7 @@ def display_title(title):
     Displays menu title with decorative formatting.
     """
     print("=" * 50)
-    print(f"{title}")
+    print(title)
     print("=" * 50)
 
 
@@ -133,7 +133,7 @@ def display_options(menu_options):
     Displays the list of menu options.
     """
     for option in menu_options:
-        print(option.display_menu())
+        print(option.display_menu_options())
 
 
 def get_user_choice(options):
@@ -170,8 +170,8 @@ def display_main_menu():
     based on the selected option.
     """
     display_title("                    MAIN MENU")
-    display_options(main_menu)
-    choice = get_user_choice(main_menu)
+    display_options(MAIN_MENU)
+    choice = get_user_choice(MAIN_MENU)
 
     # Dictionary to display and access options.
     choices = {
@@ -192,7 +192,7 @@ def access_survey():
     user_responses = {}
 
     # Iterates over each question in the survey.
-    for question, answers in question_options.items():
+    for question, answers in QUESTION_OPTIONS.items():
         print(f"\n {question}")
 
         # Displays answers possible with their index.
@@ -207,18 +207,18 @@ def access_survey():
         print(question)
         print(f"  --> {selected_answer.upper()}\n")
 
-    update_worksheet(user_responses, survey)
+    update_worksheet(user_responses, SURVEY)
     next_action()
 
 
-def update_worksheet(user_responses, survey):
+def update_worksheet(user_responses, SURVEY):
     """
     Converts user responses from a dictionary to a list format.
     Updates the worksheet with user answers.
     """
     print("\nUpdating...")
     responses_list = list(user_responses.values())
-    survey.append_row(responses_list)
+    SURVEY.append_row(responses_list)
 
     print("Thank you, your answers have been recorded!\n")
 
@@ -231,8 +231,8 @@ def next_action():
     print()
     print("." * 50)
     print("What would you like to do next? Please select an option:")
-    display_options(next_action_menu)
-    choice = get_user_choice(next_action_menu)
+    display_options(NEXT_ACTION_MENU)
+    choice = get_user_choice(NEXT_ACTION_MENU)
 
     # Dictionary to display and access next action.
     choices = {
@@ -251,8 +251,8 @@ def display_analysis_menu():
 
     """
     display_title("             >>> ANALYSIS PROGRAM <<<")
-    display_options(analysis_menu)
-    choice = get_user_choice(analysis_menu)
+    display_options(ANALYSIS_MENU)
+    choice = get_user_choice(ANALYSIS_MENU)
 
     # Dictionary to display and access options.
     choices = {
@@ -270,7 +270,7 @@ def get_survey_data():
     Retrieves survey data from worksheet.
     Returns Headers and rows in separate variables.
     """
-    data = survey.get_all_values()
+    data = SURVEY.get_all_values()
     headers = data[0]
     rows = data[1:]
     total_answers = len(rows)
@@ -333,7 +333,7 @@ def top_analysis():
 
         total_score = 0
         for answer in answers:
-            score = answers_mapping.get(answer, 0)
+            score = ANSWERS_MAPPING.get(answer, 0)
             total_score += score
 
         survey_score[header] = total_score
