@@ -85,7 +85,6 @@ def display_main_menu():
     choice = get_user_choice(MAIN_MENU)
     selected_option = MAIN_MENU[choice -1]
     selected_option.run_selected_option()
-    #handle_choice(choice, choices)
 
 
 def access_survey():
@@ -139,8 +138,8 @@ def next_action():
     print("What would you like to do next? Please select an option:")
     display_options(NEXT_ACTION_MENU)
     choice = get_user_choice(NEXT_ACTION_MENU)
-
-   # handle_choice(choice, choices)
+    selected_option = NEXT_ACTION_MENU[choice -1]
+    selected_option.run_selected_option()
 
 
 def display_analysis_menu():
@@ -151,8 +150,8 @@ def display_analysis_menu():
     display_title("             >>> ANALYSIS PROGRAM <<<")
     display_options(ANALYSIS_MENU)
     choice = get_user_choice(ANALYSIS_MENU)
-    
-    #handle_choice(choice, choices)
+    selected_option = ANALYSIS_MENU[choice -1]
+    selected_option.run_selected_option()
 
 
 def get_survey_data():
