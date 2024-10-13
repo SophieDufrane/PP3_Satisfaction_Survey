@@ -16,6 +16,10 @@ This Python project is a simplified version of the *Workhuman - Moodtracker*. It
 
 - As a manager, I want to generate summary statistics and analyse top satisfaction and top concerns so I can make data-driven decisions to improve employee satisfaction.
 
+## Data Source:
+This project uses data from the following Google Sheet:
+- [Google Sheet: Satisfaction Survey Data](https://docs.google.com/spreadsheets/d/1x5RsHwn2zUPl56D76aO-50ZlqlY9ddiT1pAFBvrcX14/edit?usp=sharing)
+
 ## Features:
 
 To define the structure of the program, I started by working with a flowchart on [Lucid](https://lucid.app/lucidchart/6696772b-e3ff-4ca0-9902-c664edc9038e/edit?invitationId=inv_e35a23e0-a2a0-4a1a-8bd6-4be77803b441&page=0_0#). The flowchart helped me visualise the overall flow of the application, including how users interact with the main menu, survey questions, and analysis options. It helped defining the logical steps from displaying the menu, collecting user input, and storing survey responses, to analysing the data retrieved from a Google Sheets.
@@ -95,7 +99,7 @@ During development, I used [Python Tutor](https://pythontutor.com/visualize.html
 ***Key Tests, Bugs and fixs:***
 
 - **API and Google Sheets Integration**
-  - *Expected*: The program retrieves data from the survey_result Google worksheet.
+  - *Expected*: The program retrieves data from the [Google Sheet: Satisfaction Survey Data](https://docs.google.com/spreadsheets/d/1x5RsHwn2zUPl56D76aO-50ZlqlY9ddiT1pAFBvrcX14/edit?usp=sharing).
   - *Testing*: Created a variable `data` to store the retrieved data and a `print()` statement to display the contents of `data` in the terminal after running `run.py`.
   - *Result*: The data was retrieved and displayed in the terminal without errors. The form was a list of lists: each inner list corresponded to a row in the worksheet, each row contained the responses to the question.
 
@@ -139,11 +143,17 @@ During development, I used [Python Tutor](https://pythontutor.com/visualize.html
 - **Avoiding repetitions**
   - *Before Refactoring*: Despite the `MenuOptions` class, I noticed that I was still repeating similar blocks of code to display Menu titles and options. For example, the Main menu and Analysis menu had nearly identical code for introducing the section.
 
-![BeforeRefactoring](media/analysis_menu_before_refactoring.webp)
+![Example of a block of code before Refactoring](media/analysis_menu_before_refactoring.webp)
 
   - *After Refactoring*: I created two generic functions to separately handle the display of the title and the display of the options for each Menu. Next, I applied the same approach to how each function handled user input and called the next action. These functions are now reusable across different sections independently.
 
-![AfterRefactoring](media/analysis_menu_after_refactoring.webp)
+![Example of a block of code after Refactoring](media/analysis_menu_after_refactoring.webp)
+
+- **Improved Usage of the MenuOptions Class**
+  - *Before Refactoring*: The `MenuOptions` class was initially used only to display menu options with an index and a description. Each function with a menu had its own block of code to display the options and handle user choice.
+  - *After Refactoring*: I moved the menu options directly into their respective dictionaries and added a new method to the MenuOptions class to display a message and execute the appropriate function. I tested the logic using [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) to ensure everything worked as expected, and then applied the refactored logic to all menus across the program. With this in place, there was no longer a need to use the `handle_choice` function.
+
+![Screenshot of Python Tutor with block of code tested](media/python_tutor.png)  
 
 ### PEP8 validation
 
@@ -164,7 +174,8 @@ Using flake8 first was beneficial because it allowed me to understand the specif
   - `pip install black`
 - To format the code using black on the specific file:
   - `black run.py`
-
+- As I noticed that Black kept lines together up to 88 characters, I added a line-length configuration:
+  - `black --line-length 79 run.py`
 
 ### Deployment Steps
 
@@ -224,4 +235,6 @@ The idea for this project was inspired by [Workhuman](https://www.workhuman.com/
   - This resource deepened my understanding of list comprehension and its usage for the project. Lists comprehension were used for example in the `summary_statistic` or `top_analysis` functions.
 - [Lambda function](https://www.geeksforgeeks.org/ways-sort-list-dictionaries-values-python-using-lambda-function/):
   - This article showed me how to use lambda functions to sort lists of dictionaries, and was used for the display of the Top Satisfaction and Concerns.
+- [Docstrings documentation](https://www.geeksforgeeks.org/python-docstrings/):
+  - This article helped me write docstrings and understand how to format comments properly. I also improved the documentation by adding information about `Parameters` and `Returns`. 
 

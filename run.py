@@ -20,7 +20,7 @@ def display_title(title):
     """
     Displays menu title with decorative formatting.
 
-    Args:
+    Parameters:
     title (str): The Menu title to be displayed.
     """
     print("=" * 50)
@@ -32,7 +32,7 @@ def display_options(menu_options):
     """
     Displays the list of menu options.
 
-    Args:
+    Parameters:
     menu_options (list): A list of MenuOptions objects to be displayed.
     """
     for option in menu_options:
@@ -42,8 +42,8 @@ def display_options(menu_options):
 def get_user_choice(options):
     """
     Gets and validates the user selection from the list of options.
-    
-    Args:
+
+    Parameters:
     options (list): The list of available Menu options.
 
     Returns:
@@ -52,27 +52,19 @@ def get_user_choice(options):
     # Prompts user to select an option until valid input entered.
     while True:
         try:
-            choice = int(input(f"\nPlease enter your selection (1-{len(options)}):\n"))
+            choice = int(
+                input(f"\nPlease enter your selection (1-{len(options)}):\n")
+            )
             if 1 <= choice <= len(options):
                 return choice
             else:
-                raise ValueError("Invalid selection. Please choose a number within the range.")
+                raise ValueError(
+                    "Invalid selection. Please choose a number"
+                    "within the range."
+                )
 
         except ValueError:
             print("Invalid selection, please try again.")
-
-
-#def handle_choice(choice, choices):
-    """
-    Handles the user choice by displaying a message and executing the associated function.
-
-    Args:
-    choice (int): The user selected choice.
-    choices (dict): Dictionary mapping the choice number to a tuple (description, function)
-    """
-    #if choice in choices:
-        #print(choices[choice][0])
-        #choices[choice][1]()
 
 
 def display_main_menu():
@@ -83,13 +75,14 @@ def display_main_menu():
     display_title("                    MAIN MENU")
     display_options(MAIN_MENU)
     choice = get_user_choice(MAIN_MENU)
-    selected_option = MAIN_MENU[choice -1]
+    selected_option = MAIN_MENU[choice - 1]
     selected_option.run_selected_option()
 
 
 def access_survey():
     """
-    Displays the survey questions, collects user responses, and updates the worksheet.
+    Displays the survey questions, collects user responses
+    and updates the worksheet.
     """
     display_title("           >>>>> YOUR VOICE MATTERS <<<<<")
     user_responses = {}
@@ -118,7 +111,7 @@ def update_worksheet(user_responses, SURVEY):
     """
     Updates the Google worksheet with user responses.
 
-    Args:
+    Parameters:
     user_responses (dict): Dictionary of survey questions and user responses.
     SURVEY (gspread.Worksheet): Worksheet to append the responses to.
     """
@@ -138,7 +131,7 @@ def next_action():
     print("What would you like to do next? Please select an option:")
     display_options(NEXT_ACTION_MENU)
     choice = get_user_choice(NEXT_ACTION_MENU)
-    selected_option = NEXT_ACTION_MENU[choice -1]
+    selected_option = NEXT_ACTION_MENU[choice - 1]
     selected_option.run_selected_option()
 
 
@@ -150,16 +143,16 @@ def display_analysis_menu():
     display_title("             >>> ANALYSIS PROGRAM <<<")
     display_options(ANALYSIS_MENU)
     choice = get_user_choice(ANALYSIS_MENU)
-    selected_option = ANALYSIS_MENU[choice -1]
+    selected_option = ANALYSIS_MENU[choice - 1]
     selected_option.run_selected_option()
 
 
 def get_survey_data():
     """
     Retrieves survey data from worksheet.
-    
+
     Returns:
-    tuple: Tuple containing the headers, rows of data, and total count of answers.
+    tuple: Tuple containing the headers, rows of data, a count of responses.
     """
     data = SURVEY.get_all_values()
     headers = data[0]
@@ -170,7 +163,8 @@ def get_survey_data():
 
 def summary_statistic():
     """
-    Displays a summary of the survey statistic, showing percentage of each response for every question.
+    Displays a summary of the survey statistic,
+    showing percentage of each response for every question.
     """
     display_title("                 SUMMARY STATISTIC")
 
@@ -207,8 +201,9 @@ def summary_statistic():
 
 def top_analysis():
     """
-    Displays the Top Satisfaction & Top Concerns based on survey scores.
-    For each question, the function calculates a score based on the sum of mapped answers.
+    Displays a ranking of responses for each area.
+    For each question, calculates a score by mapping answers to a
+    value and ranks the results accordingly.
     """
     display_title("          TOP SATISFACTION & TOP CONCERNS")
 
@@ -236,20 +231,22 @@ def top_analysis():
 
     next_action()
 
+
 class MenuOptions:
     """
-    Displays the Menus Options, with an index for each option.
+    Displays a Menu Options, with an index and a description for each option.
+    Executes the corresponding action when selected by the user.
     """
 
     def __init__(self, index, option, action_message, execute_action):
         """
-        Initialises a MenuOptions instance with an index and option description.
-        
-        Args:
-        index (int): The number representing the option.
-        option (str): A string description of the option.
-        action_message (str):
-        execute_action ():
+        Initialises a MenuOptions.
+
+        Parameters:
+            index (int): The number representing the option.
+            option (str): A string description of the option.
+            action_message (str): A message to confirm user selection.
+            execute_action (function): A function to be executed.
         """
         self.index = index
         self.option = option
@@ -258,7 +255,10 @@ class MenuOptions:
 
     def display_menu_options(self):
         """
-        Returns a formatted string for displaying menu options
+        Returns a formatted string for displaying menu options.
+
+        Returns:
+            str: Formatted option as 'index - option description'.
         """
         return f"{self.index} - {self.option}"
 
@@ -266,26 +266,62 @@ class MenuOptions:
         """
         Prints a message to acknowledge the user choice.
         Calls the function associated to action selected.
+
+        Returns:
+            The associated function.
         """
         print(self.action_message)
         return self.execute_action()
 
+
 MAIN_MENU = [
-    MenuOptions(1, "Access to Survey", "Accessing Moodtracker Survey...\n", access_survey),
-    MenuOptions(2, "Access to Analysis Program", "Accessing Analysis Program...\n", display_analysis_menu),
+    MenuOptions(
+        1,
+        "Access to Survey",
+        "Accessing Moodtracker Survey...\n",
+        access_survey,
+    ),
+    MenuOptions(
+        2,
+        "Access to Analysis Program",
+        "Accessing Analysis Program...\n",
+        display_analysis_menu,
+    ),
     MenuOptions(3, "Exit Program", "Exiting Program...", quit),
 ]
 
 ANALYSIS_MENU = [
-    MenuOptions(1, "Summary Statistic", "Accessing Summary Statistic...\n", summary_statistic),
-    MenuOptions(2, "Top Satisfaction & Top Concerns", "Accessing Top Satisfaction & Top Concerns...\n", top_analysis),
-    MenuOptions(3, "Back to Main Menu", "Back to Main Menu...\n", display_main_menu),
+    MenuOptions(
+        1,
+        "Summary Statistic",
+        "Accessing Summary Statistic...\n",
+        summary_statistic,
+    ),
+    MenuOptions(
+        2,
+        "Top Satisfaction & Top Concerns",
+        "Accessing Top Satisfaction & Top Concerns...\n",
+        top_analysis,
+    ),
+    MenuOptions(
+        3, "Back to Main Menu", "Back to Main Menu...\n", display_main_menu
+    ),
     MenuOptions(4, "Exit Program", "Exiting Program...", quit),
 ]
 
 NEXT_ACTION_MENU = [
-    MenuOptions(1, "Back to Main Menu", "Accessing to Main Menu...\n", display_main_menu),
-    MenuOptions(2, "Back to Analysis Menu", "Accessing to Analysis Menu...\n", display_analysis_menu),
+    MenuOptions(
+        1,
+        "Back to Main Menu",
+        "Accessing to Main Menu...\n",
+        display_main_menu,
+    ),
+    MenuOptions(
+        2,
+        "Back to Analysis Menu",
+        "Accessing to Analysis Menu...\n",
+        display_analysis_menu,
+    ),
     MenuOptions(3, "Exit Program", "Exiting Program...", quit),
 ]
 
