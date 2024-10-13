@@ -16,119 +16,6 @@ SHEET = GSPREAD_CLIENT.open("satisfaction-survey")
 SURVEY = SHEET.worksheet("survey_result")
 
 
-class MenuOptions:
-    """
-    Displays the Menus Options, with an index for each option.
-    """
-
-    def __init__(self, index, option):
-        """
-        Initialises a MenuOptions instance with an index and option description.
-        
-        Args:
-        index (int): The number representing the option.
-        option (str): A string description of the option.
-        """
-        self.index = index
-        self.option = option
-
-    def display_menu_options(self):
-        """
-        Returns a formatted string for displaying menu options
-        """
-        return f"{self.index} - {self.option}"
-
-
-MAIN_MENU = [
-    MenuOptions(1, "Access to Survey"),
-    MenuOptions(2, "Access to Analysis Program"),
-    MenuOptions(3, "Exit Program"),
-]
-
-ANALYSIS_MENU = [
-    MenuOptions(1, "Summary Statistic"),
-    MenuOptions(2, "Top Satisfaction & Top Concerns"),
-    MenuOptions(3, "Back to Main Menu"),
-    MenuOptions(4, "Exit Program"),
-]
-
-NEXT_ACTION_MENU = [
-    MenuOptions(1, "Back to Main Menu"),
-    MenuOptions(2, "Back to Analysis Menu"),
-    MenuOptions(3, "Exit Program"),
-]
-
-# Dictionary with Question as key and list of answers as values.
-QUESTION_OPTIONS = {
-    "How satisfied are you with your current job role?": [
-        "Very Satisfied",
-        "Satisfied",
-        "Neutral",
-        "Dissatisfied",
-        "Very Dissatisfied",
-    ],
-    "How would you rate the work environment at our company?": [
-        "Excellent",
-        "Good",
-        "Average",
-        "Poor",
-        "Very Poor",
-    ],
-    "Do you feel you have opportunities for professional growth and "
-    "development?": [
-        "Strongly Agree",
-        "Agree",
-        "Neutral",
-        "Disagree",
-        "Strongly Disagree",
-    ],
-    "How would you rate your work-life balance?": [
-        "Excellent",
-        "Good",
-        "Average",
-        "Poor",
-        "Very Poor",
-    ],
-    "How effective is communication within the company?": [
-        "Very Effective",
-        "Effective",
-        "Neutral",
-        "Ineffective",
-        "Very Ineffective",
-    ],
-    "Overall, how satisfied are you with working at our company?": [
-        "Very Satisfied",
-        "Satisfied",
-        "Neutral",
-        "Dissatisfied",
-        "Very Dissatisfied",
-    ],
-}
-
-# Maps answers to scores.
-ANSWERS_MAPPING = {
-    "Very Satisfied": 5,
-    "Excellent": 5,
-    "Strongly Agree": 5,
-    "Very Effective": 5,
-    "Satisfied": 4,
-    "Good": 4,
-    "Agree": 4,
-    "Effective": 4,
-    "Neutral": 3,
-    "Average": 3,
-    "Dissatisfied": 2,
-    "Poor": 2,
-    "Disagree": 2,
-    "Ineffective": 2,
-    "Very Dissatisfied": 1,
-    "Very Poor": 1,
-    "Stronly Disagree": 1,
-    "Very Poor": 1,
-    "Very Ineffective": 1,
-}
-
-
 def display_title(title):
     """
     Displays menu title with decorative formatting.
@@ -175,7 +62,7 @@ def get_user_choice(options):
             print("Invalid selection, please try again.")
 
 
-def handle_choice(choice, choices):
+#def handle_choice(choice, choices):
     """
     Handles the user choice by displaying a message and executing the associated function.
 
@@ -183,9 +70,9 @@ def handle_choice(choice, choices):
     choice (int): The user selected choice.
     choices (dict): Dictionary mapping the choice number to a tuple (description, function)
     """
-    if choice in choices:
-        print(choices[choice][0])
-        choices[choice][1]()
+    #if choice in choices:
+        #print(choices[choice][0])
+        #choices[choice][1]()
 
 
 def display_main_menu():
@@ -196,15 +83,9 @@ def display_main_menu():
     display_title("                    MAIN MENU")
     display_options(MAIN_MENU)
     choice = get_user_choice(MAIN_MENU)
-
-    # Dictionary to display and access options.
-    choices = {
-        1: ("Accessing Moodtracker Survey...\n", access_survey),
-        2: ("Accessing Analysis Program...\n", display_analysis_menu),
-        3: ("Exiting Program...", quit),
-    }
-    
-    handle_choice(choice, choices)
+    selected_option = MAIN_MENU[choice -1]
+    selected_option.run_selected_option()
+    #handle_choice(choice, choices)
 
 
 def access_survey():
@@ -259,14 +140,7 @@ def next_action():
     display_options(NEXT_ACTION_MENU)
     choice = get_user_choice(NEXT_ACTION_MENU)
 
-    # Dictionary to display and access next action.
-    choices = {
-        1: ("Accessing to Main Menu...\n", display_main_menu),
-        2: ("Accessing to Analysis Menu...\n", display_analysis_menu),
-        3: ("Exiting Program...", quit),
-    }
-
-    handle_choice(choice, choices)
+   # handle_choice(choice, choices)
 
 
 def display_analysis_menu():
@@ -277,16 +151,8 @@ def display_analysis_menu():
     display_title("             >>> ANALYSIS PROGRAM <<<")
     display_options(ANALYSIS_MENU)
     choice = get_user_choice(ANALYSIS_MENU)
-
-    # Dictionary to display and access options.
-    choices = {
-        1: ("Accessing Summary Statistic...\n", summary_statistic),
-        2: ("Accessing Top Satisfaction & Top Concerns...\n", top_analysis),
-        3: ("Back to Main Menu...\n", display_main_menu),
-        4: ("Exiting Program...", quit),
-    }
     
-    handle_choice(choice, choices)
+    #handle_choice(choice, choices)
 
 
 def get_survey_data():
@@ -370,6 +236,129 @@ def top_analysis():
         print(f"- {question.upper()}: {percentage}% satisfaction")
 
     next_action()
+
+class MenuOptions:
+    """
+    Displays the Menus Options, with an index for each option.
+    """
+
+    def __init__(self, index, option, action_message, execute_action):
+        """
+        Initialises a MenuOptions instance with an index and option description.
+        
+        Args:
+        index (int): The number representing the option.
+        option (str): A string description of the option.
+        action_message (str):
+        execute_action ():
+        """
+        self.index = index
+        self.option = option
+        self.action_message = action_message
+        self.execute_action = execute_action
+
+    def display_menu_options(self):
+        """
+        Returns a formatted string for displaying menu options
+        """
+        return f"{self.index} - {self.option}"
+
+    def run_selected_option(self):
+        """
+        Prints a message to acknowledge the user choice.
+        Calls the function associated to action selected.
+        """
+        print(self.action_message)
+        return self.execute_action()
+
+MAIN_MENU = [
+    MenuOptions(1, "Access to Survey", "Accessing Moodtracker Survey...\n", access_survey),
+    MenuOptions(2, "Access to Analysis Program", "Accessing Analysis Program...\n", display_analysis_menu),
+    MenuOptions(3, "Exit Program", "Exiting Program...", quit),
+]
+
+ANALYSIS_MENU = [
+    MenuOptions(1, "Summary Statistic", "Accessing Summary Statistic...\n", summary_statistic),
+    MenuOptions(2, "Top Satisfaction & Top Concerns", "Accessing Top Satisfaction & Top Concerns...\n", top_analysis),
+    MenuOptions(3, "Back to Main Menu", "Back to Main Menu...\n", display_main_menu),
+    MenuOptions(4, "Exit Program", "Exiting Program...", quit),
+]
+
+NEXT_ACTION_MENU = [
+    MenuOptions(1, "Back to Main Menu", "Accessing to Main Menu...\n", display_main_menu),
+    MenuOptions(2, "Back to Analysis Menu", "Accessing to Analysis Menu...\n", display_analysis_menu),
+    MenuOptions(3, "Exit Program", "Exiting Program...", quit),
+]
+
+# Dictionary with Question as key and list of answers as values.
+QUESTION_OPTIONS = {
+    "How satisfied are you with your current job role?": [
+        "Very Satisfied",
+        "Satisfied",
+        "Neutral",
+        "Dissatisfied",
+        "Very Dissatisfied",
+    ],
+    "How would you rate the work environment at our company?": [
+        "Excellent",
+        "Good",
+        "Average",
+        "Poor",
+        "Very Poor",
+    ],
+    "Do you feel you have opportunities for professional growth and "
+    "development?": [
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree",
+    ],
+    "How would you rate your work-life balance?": [
+        "Excellent",
+        "Good",
+        "Average",
+        "Poor",
+        "Very Poor",
+    ],
+    "How effective is communication within the company?": [
+        "Very Effective",
+        "Effective",
+        "Neutral",
+        "Ineffective",
+        "Very Ineffective",
+    ],
+    "Overall, how satisfied are you with working at our company?": [
+        "Very Satisfied",
+        "Satisfied",
+        "Neutral",
+        "Dissatisfied",
+        "Very Dissatisfied",
+    ],
+}
+
+# Maps answers to scores.
+ANSWERS_MAPPING = {
+    "Very Satisfied": 5,
+    "Excellent": 5,
+    "Strongly Agree": 5,
+    "Very Effective": 5,
+    "Satisfied": 4,
+    "Good": 4,
+    "Agree": 4,
+    "Effective": 4,
+    "Neutral": 3,
+    "Average": 3,
+    "Dissatisfied": 2,
+    "Poor": 2,
+    "Disagree": 2,
+    "Ineffective": 2,
+    "Very Dissatisfied": 1,
+    "Very Poor": 1,
+    "Stronly Disagree": 1,
+    "Very Poor": 1,
+    "Very Ineffective": 1,
+}
 
 if __name__ == "__main__":
     display_main_menu()
