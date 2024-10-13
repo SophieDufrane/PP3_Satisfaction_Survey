@@ -18,11 +18,11 @@ This Python project is a simplified version of the *Workhuman - Moodtracker*. It
 
 ## Features:
 
-To define the structure of the program, I started by working with a flowchart on [Lucid](https://lucid.app/lucidchart/6696772b-e3ff-4ca0-9902-c664edc9038e/edit?invitationId=inv_e35a23e0-a2a0-4a1a-8bd6-4be77803b441&page=0_0#). The flowchart helped me visualize the overall flow of the application, including how users interact with the main menu, survey questions, and analysis options. It helped defining the logical steps from displaying the menu, collecting user input, and storing survey responses, to analyzing the data retrieved from a Google Sheets.
+To define the structure of the program, I started by working with a flowchart on [Lucid](https://lucid.app/lucidchart/6696772b-e3ff-4ca0-9902-c664edc9038e/edit?invitationId=inv_e35a23e0-a2a0-4a1a-8bd6-4be77803b441&page=0_0#). The flowchart helped me visualise the overall flow of the application, including how users interact with the main menu, survey questions, and analysis options. It helped defining the logical steps from displaying the menu, collecting user input, and storing survey responses, to analysing the data retrieved from a Google Sheets.
 
-By using a flowchart, I wanted to ensure a smooth, logical flow of data throughout.
+By using a flowchart, I wanted to ensure a smooth, logical flow.
 
-![Flowchart](media/flowcharts.webp)
+![Project Flowchart](media/flowcharts.png)
 
 ### Existing Features:
 
@@ -31,12 +31,13 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 - *Overview*: The Main Menu serves as a starting point for navigating the program.
 
 - *Features*:
-  - **Clear Option Presentation**: The menu presents the available options in a simple, easy-to-read format.
-    - Menu Handlin: Menu options are managed using a `MenuOptions` class. This allows for flexibility, as the same code is used for different menus. A `for` loop is used to iterate over the list of options and display them, making the code more modular and easier to maintain.
+  - **Clear Options Presentation**: The menu presents the available options in a simple, easy-to-read format.
+    - Menu Handlin: The options are managed using a `MenuOptions` class. This allows for flexibility, as the same code is used for different menus. A `for` loop is used to iterate over the list of options and display them, making the code easier to maintain.
   - **Input Validation**: User inputs are validated to ensure that only valid options are accepted. If an invalid option is entered, the user is prompted to try again.
+    - Validation Logic: Input validation is managed using a `while` loop and `try-except` block. The `try` block checks if the input is a valid integer within the expected range. If not, an exception is raised, and the user is prompted to enter a correct value.
   - **User Flow**: The program allows users to easily navigate between sections.
 
-![MainMenu](media/main_menu.webp)
+![Main Menu with options](media/main_menu.png)
 
 **Moodtracker Survey**
 
@@ -45,81 +46,81 @@ By using a flowchart, I wanted to ensure a smooth, logical flow of data througho
 - *Features*:
   - **Question Display**: The survey presents one question at a time, allowing employees to provide thoughtful responses.
     - Survey Logic: The survey uses dictionaries to store questions and possible answers. Each question is a 'key,' and the possible answers are the 'values.' This structure made it easy to add more questions later (which I did after working with a shorter sample to test the function).
-  - **Input Validation**: The program ensures that all inputs are valid.
-    - Validation Logic: Input validation is managed using a `while` loop and `try-except` block. The `try` block checks if the input is a valid integer within the expected range. If not, an exception is raised, and the user is prompted to enter a correct value.
+  - **Input Validation**: The program ensures that all inputs are valid using the same function as for the Main Menu.
   - **Summary**: Displays user responses at the end of the survey, providing a clear overview of what will be recorded.
-  - **Next Action**: After the survey, users can return to the main menu or exit the program.
+  - **Next Action**: After the survey, user has the option to move to another section or Exit the program.
 
 - *User Experience*: The survey design is quite simple and user-friendly, guiding employees through the process seamlessly. Prompts and clear instructions make it easy for users to navigate and complete the survey.
 
-![Survey](media/survey.webp)
+![Survey displaying with sample of questions and answers](media/survey.png)
 
-![SurveySummary](media/survey_summary.webp)
+![User responses summary](media/survey_user_summary.png)
 
-![NextAction](media/next_action.webp)
+![Prompt to next action with options](media/next_action.png)
 
 **Analysis Program**
 
-- *Goal*: To provide insightful data analysis from a large panel of employee responses to Human Ressources and managers.
+- *Goal*: To provide insightful data analysis to Human Ressources and managers, from a large panel of employee responses.
 
 - *Feature*: 
   - **Interactive Menu**: The analysis section offers a easy-to-navigate menu with multiple options to explore survey results in detail.
-  - **Input Validation**: Similar to the survey section, user inputs are validated.
+  - **Input Validation**: Similar to the Main Menu and Survey section, user inputs are validated.
   - **Summary Analysis**: Provides an overview of survey responses.
     - Responses are counted and stored in a dictionary. These counts are converted into percentages by dividing by the total number of responses, giving a clear picture of how employees feel.
   - **Top Satisfaction and Top Concerns**: Shows the most and least favorable areas.
-    - Sorting Logic: The analysis program uses lambda functions to sort questions by satisfaction scores (e.g., "Very Satisfied" = 5 points).
-  - **Next Action**: After analysis, users can return to the main menu or exit.
+    - Sorting Logic: The analysis program calculates satisfaction scores by assigning points to each answer (e.g., "Very Satisfied" = 5 points). Then it uses a lambda function to sort the survey questions based on their score.
+    - Percentage Calculation: For each question, the score is divided by the maximum possible score and multiplied by 100 to give a percentage. This percentage represents the satisfaction level for each question.
+  - **Next Action**: After analysis, user has the option to move to another section or Exit the program.
 
 - *User Experience*: This section has been designed to give HR professionals and managers quick access to meaningful statistics, making decision-making more informed and efficient.
 
-![AnalysisMenu](media/analysis_menu.webp)
+![Analysis Menu with options](media/analysis_menu.png)
 
-![SummaryAnalysis](media/summary_stat.webp)
+![Summary Statistic with survey results](media/summary_statistic.png)
 
-![Tops](media/tops.webp)
+![Top Satisfaction and Top concerns with ranking](media/tops.png)
 
 ### Features left to implement:
 
 **Credentials requirement to access to Analysis Program**
-- Since the analysis section contains confidential survey results, a credential check will be implemented to ensure only authorized personnel can access this data.
+- Since the analysis section contains confidential survey results, a credential check will be implemented to ensure only authorised personnel can access this data.
 
 **Additional Analysis Options**
-- The analysis program will be expanded to include more detailed metrics and deeper insights, providing a more comprehensive view of employee satisfaction and potential areas for improvement.
+- The analysis program will be expanded to include more detailed metrics and deeper insights, providing a comprehensive view of employee satisfaction and potential areas for improvement.
 
 ## Manual Testing:
 
-During development, I used [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) to break down and visualize small blocks of code. This tool allowed me to test the execution of the program, catching issues and confirming when the logic worked as expected.
+During development, I used [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) to break down and visualise small blocks of code. This tool allowed me to test the execution of functions independently, spoting issues and confirming when the logic worked as expected.
 
 ***Key Tests, Bugs and fixs:***
 
 - **API and Google Sheets Integration**
-  - *Expected*: The program retrieves data from the survey_result worksheet.
-  - *Testing*: Added a print() statement to display the retrieved data, then ran run.py in the terminal.
-  - *Result*: The data was retrieved from the correct worksheet and displayed in the terminal without errors.
+  - *Expected*: The program retrieves data from the survey_result Google worksheet.
+  - *Testing*: Created a variable `data` to store the retrieved data and a `print()` statement to display the contents of `data` in the terminal after running `run.py`.
+  - *Result*: The data was retrieved and displayed in the terminal without errors. The form was a list of lists: each inner list corresponded to a row in the worksheet, each row contained the responses to the question.
 
 - **Main Menu Input Validation**
-  - *Expected*: The program only accepts valid inputs (1, 2, or 3) and provide access to the choosen section. Invalid inputs should trigger an error message prompting the user to try again.
-  - *Testing*: Ran run.py in the terminal, testing valid and invalid inputs.
-  - *Result*: The program correctly processed valid inputs, allowing access to the selected section. Invalid inputs displayed the error message.
+  - *Expected*: The program only accepts valid inputs (1, 2, or 3) and provide access to the choosen section. Invalid inputs trigger an error message prompting the user to try again.
+  - *Testing*: Ran run.py in the terminal, testing valid and invalid inputs: numbers out of range, punctuation, alphabet letters, blank.
+  - *Result*: The program correctly processed valid inputs, allowing access to the selected section. All type of invalid inputs displayed the error message.
 
 - **Main Menu Display with Class and Dictionary**
   - *Expected*: The menu options display in correct order (1, 2, 3) along with their respective section names.
   - *Testing*: Added a print() statement to display the set used for storing menu options then ran run.py in the terminal.
   - *Result*: The options were displayed in reverse order (3 to 1).
-  - *Fix*: To maintain the correct order, I replaced the set used for storing menu options with a dictionary, which preserves the insertion order.
+  - *Fix*: To maintain the correct order, I replaced the set initially used for storing menu options with a dictionary, which preserves the insertion order.
 
 - **Survey Display**
   - *Expected*: The program displays questions one at a time, allowing user to select their answers before moving to the next question.
   - *Testing*: Ran run.py in the terminal to simulate the survey.
   - *Result*: All questions were displayed simultaneously.
-  - *Fix*: The input for user answers was placed outside the loop, causing all questions to appear at once. I moved the input inside the loop so the program waited for user input before moving to the next question.
+  - *Fix*: The input for user answers was placed outside the loop because of an incorrect idendation, causing all questions to appear at once. I moved the input inside the loop so the program waited for user input before moving to the next question.
 
 - **Survey responses**
   - *Expected*: User responses to be collected and displayed in a summary.
   - *Testing*: Ran run.py and submitted answers to test the response collection.
   - *Result*: Incorrect responses were displayed (e.g., "Satisfied" instead of "Very Satisfied").
-  - *Fix*: The issue came from the indexing in the list of answers (zero-based). By subtracting 1 from user choice, I ensured the correct answer was selected. Additionally, I noticed a variable name conflict in the final print loop (`answers` was reused), so I renamed it to `selected_answer` to clarify.
+  - *Fix*: The issue came from the indexing in the list of answers (zero-based). By subtracting 1 from user choice, I ensured the correct answer was selected. Additionally, I noticed a variable name conflict in the final print loop (`answers` was reused), so I renamed it to `selected_answer` for more clarity.
 
 - **Analysis Menu**
   - *Expected*: Displays analysis options in the correct order (1, 2, 3).
@@ -198,25 +199,29 @@ The live link can be found here: [Moodtracker](https://satisfaction-survey-sd-a4
 
 The idea for this project was inspired by [Workhuman](https://www.workhuman.com/), a company that offers solutions to improve employee engagement and feedback mechanisms. 
 
-### External Libraries
+### External Libraries, Tools and Technology
 
-- `gspread`: Used to interact with *Google Sheets*. This library was essential for retrieving and storing survey responses in real-time, allowing the application to dynamically update and analyze survey data directly from the Google Sheets document.
-- `google.oauth2`: Used for authenticating access to *Google Sheets* via service account credentials. This library was crucial for secure and authorized access to the Google Sheets API, ensuring that only authorized users can read or write data to the survey spreadsheet.
+- `gspread`: A Python library used to interact with *Google Sheets*. This library was essential for retrieving and storing survey responses in real-time, allowing the application to dynamically update and analyse survey data directly from the Google Sheets document.
+- `google.oauth2`: Another librairy used for authenticating access to *Google Sheets* via service account credentials. This library was crucial for secure and authorised access to the Google Sheets API. Credentials were managed securely through the creds.json file. 
+- `Google Sheets`: Used to store and manage survey responses.
+- `Python`: The main programming language used for building the survey and analysis tool.
+- `Google Cloud Console`: Used to generate credentials and API accesses for Google Sheets integration.
+- `Gitpod`: A cloud-based IDE used for developing the project.
 
 ### Resources
 
 - [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1): 
   - This *Code Institute* project provided guidance on how to implement the integration with *Google Sheets*. Specifically, the setup for `gspread` and Credentials authentication was adapted from this project.
-  - For example, the code handling *Google Sheets* authentication and updating (in the `update_worksheet` and `get_survey_data` functions) was based on *Love Sandwiches* but modified to suit the needs of this Moodtracker project. These modifications included adjusting for different worksheet names and data formatting for survey responses. 
-  - The validation logic using a `while True` loop with `try-except` for user input was also adapted from the *Love Sandwiches* project. This logic was reused and slightly modified to handle different menu options and return selections based on this project's requirements.
+  - The code handling *Google Sheets* authentication and updating (in the `update_worksheet` and `get_survey_data` functions) was also based on this project but modified to suit the needs of the current project. These modifications included adjusting for different worksheet names and data formatting for survey responses. 
+  - The validation logic using a `while True` loop with `try-except` for user input was also adapted and slightly modified to handle different menu options and return selections based on this project's requirements.
 - [Python Tutor](https://pythontutor.com/visualize.html#mode=edit): 
-  - This online tool was used to visualize and debug blocks of Python code, helping to ensure the logic was correct throughout development.
+  - This online tool was used to visualize and debug blocks of code, helping to ensure the logic was correct throughout development.
 - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/), [Flake8](https://flake8.pycqa.org/en/latest/) and [Black](https://pypi.org/project/black/): 
   - These resources were used for code formatting and validation according to Python standards. Flake8 was initially used for style error detection, while Black was employed for automated code formatting.
 - [Functions vs Classes: When to Use Which and Why?](https://www.youtube.com/watch?v=txRTzljmV0Q):
   - This video helped me understand when to use functions and when to use classes, which made it easier to apply these concepts in my project.
 - [List Comprehension](https://www.learndatasci.com/solutions/python-list-comprehension/):
-  - This resource deepened my understanding of list comprehension and its efficient usage in Python.
+  - This resource deepened my understanding of list comprehension and its usage for the project. Lists comprehension were used for example in the `summary_statistic` or `top_analysis` functions.
 - [Lambda function](https://www.geeksforgeeks.org/ways-sort-list-dictionaries-values-python-using-lambda-function/):
-  - This article showed me how to use lambda functions to sort lists of dictionaries, which helped me work better with data structures..
+  - This article showed me how to use lambda functions to sort lists of dictionaries, and was used for the display of the Top Satisfaction and Concerns.
 
