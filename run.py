@@ -15,6 +15,27 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("satisfaction-survey")
 SURVEY = SHEET.worksheet("survey_result")
 
+# Sets up a length for displaying titles
+MENU_WIDTH = 80
+
+
+def format_title(title):
+    """
+    Formats the given title by centering it within the menu width.
+    
+    The function calculates the padding based on the title's length 
+    and the menu width, and adds spaces before the title to center it.
+    
+    Parameters:
+    title (str): The title to be centered.
+        
+    Returns:
+    str: The title string centered with spaces for defined menu width.
+    """
+    title_length = len(title)
+    padding = (MENU_WIDTH - title_length) // 2
+    return (" " * padding) + title
+
 
 def display_title(title):
     """
@@ -23,9 +44,9 @@ def display_title(title):
     Parameters:
     title (str): The Menu title to be displayed.
     """
-    print("=" * 50)
-    print(title)
-    print("=" * 50)
+    print("=" * MENU_WIDTH)
+    print(format_title(title))
+    print("=" * MENU_WIDTH)
 
 
 def display_options(menu_options):
@@ -71,8 +92,8 @@ def display_main_menu():
     """
     Displays the main menu, handles user choice, and directs to next action.
     """
-    # Add extra spaces to center the title.
-    display_title("                    MAIN MENU")
+    # Add extra spaces to center the title    
+    display_title("MAIN MENU")
     display_options(MAIN_MENU)
     choice = get_user_choice(MAIN_MENU)
     selected_option = MAIN_MENU[choice - 1]
@@ -84,7 +105,7 @@ def access_survey():
     Displays the survey questions, collects user responses
     and updates the worksheet.
     """
-    display_title("           >>>>> YOUR VOICE MATTERS <<<<<")
+    display_title(">>>>> YOUR VOICE MATTERS <<<<<")
     user_responses = {}
 
     # Iterates over each question in the survey.
@@ -127,7 +148,7 @@ def next_action():
     Displays options for next action.
     """
     print()
-    print("." * 50)
+    print("." * 80)
     print("What would you like to do next? Please select an option:")
     display_options(NEXT_ACTION_MENU)
     choice = get_user_choice(NEXT_ACTION_MENU)
@@ -140,7 +161,7 @@ def display_analysis_menu():
     Displays the Analysis menu and handles user choice for analysis options.
 
     """
-    display_title("             >>> ANALYSIS PROGRAM <<<")
+    display_title(">>> ANALYSIS PROGRAM <<<")
     display_options(ANALYSIS_MENU)
     choice = get_user_choice(ANALYSIS_MENU)
     selected_option = ANALYSIS_MENU[choice - 1]
@@ -166,7 +187,7 @@ def summary_statistic():
     Displays a summary of the survey statistic,
     showing percentage of each response for every question.
     """
-    display_title("                 SUMMARY STATISTIC")
+    display_title("SUMMARY STATISTIC")
 
     headers, rows, total_answers = get_survey_data()
     survey_data = {}
@@ -190,9 +211,9 @@ def summary_statistic():
 
     for question, answers in survey_data.items():
         print()
-        print("-" * 50)
+        print("-" * 80)
         print(question.upper())
-        print("-" * 50)
+        print("-" * 80)
         for answer, percentage in answers.items():
             print(f"   --> {answer}: {percentage} %")
 
@@ -205,7 +226,7 @@ def top_analysis():
     For each question, calculates a score by mapping answers to a
     value and ranks the results accordingly.
     """
-    display_title("          TOP SATISFACTION & TOP CONCERNS")
+    display_title("TOP SATISFACTION & TOP CONCERNS")
 
     headers, rows, total_answers = get_survey_data()
     survey_score = {}
