@@ -53,8 +53,11 @@ def display_options(menu_options):
     """
     Displays the list of menu options.
 
+    Class:
+    This function uses instances of the MenuOptions class to display the menu options.
+
     Parameters:
-    menu_options (list): A list of MenuOptions objects to be displayed.
+    menu_options (list of MenuOptions): A list of MenuOptions instances to be displayed.
     """
     for option in menu_options:
         print(option.display_menu_options())
@@ -63,7 +66,7 @@ def display_options(menu_options):
 def get_user_choice(options):
     """
     Gets and validates the user selection from the list of options.
-
+    
     Parameters:
     options (list): The list of available Menu options.
 
@@ -92,10 +95,10 @@ def display_main_menu():
     """
     Displays the main menu, handles user choice, and directs to next action.
     """
-    # Add extra spaces to center the title
     display_title("MAIN MENU")
     display_options(MAIN_MENU)
     choice = get_user_choice(MAIN_MENU)
+    # Converts user 1-based choice to the list's 0-based index.
     selected_option = MAIN_MENU[choice - 1]
     selected_option.run_selected_option()
 
@@ -294,56 +297,74 @@ class MenuOptions:
         print(self.action_message)
         return self.execute_action()
 
-
+# Constants for menu options used throughout the program.
 MAIN_MENU = [
     MenuOptions(
-        1,
-        "Access to Survey",
-        "Accessing Moodtracker Survey...\n",
-        access_survey,
+        index = 1,
+        option = "Access to Survey",
+        action_message = "Accessing Moodtracker Survey...\n",
+        execute_action = access_survey,
     ),
     MenuOptions(
-        2,
-        "Access to Analysis Program",
-        "Accessing Analysis Program...\n",
-        display_analysis_menu,
+        index = 2,
+        option ="Access to Analysis Program",
+        action_message ="Accessing Analysis Program...\n",
+        execute_action = display_analysis_menu,
     ),
-    MenuOptions(3, "Exit Program", "Exiting Program...", quit),
+    MenuOptions(
+        index = 3,
+        option = "Exit Program",
+        action_message ="Exiting Program...",
+        execute_action = quit
+    ),
 ]
 
 ANALYSIS_MENU = [
     MenuOptions(
-        1,
-        "Summary Statistic",
-        "Accessing Summary Statistic...\n",
-        summary_statistic,
+        index = 1,
+        option = "Summary Statistic",
+        action_message ="Accessing Summary Statistic...\n",
+        execute_action = summary_statistic,
     ),
     MenuOptions(
-        2,
-        "Top Satisfaction & Top Concerns",
-        "Accessing Top Satisfaction & Top Concerns...\n",
-        top_analysis,
+        index = 2,
+        option = "Top Satisfaction & Top Concerns",
+        action_message ="Accessing Top Satisfaction & Top Concerns...\n",
+        execute_action = top_analysis,
     ),
     MenuOptions(
-        3, "Back to Main Menu", "Back to Main Menu...\n", display_main_menu
+        index = 3,
+        option = "Back to Main Menu",
+        action_message ="Back to Main Menu...\n",
+        execute_action = display_main_menu
     ),
-    MenuOptions(4, "Exit Program", "Exiting Program...", quit),
+    MenuOptions(
+        index = 4,
+        option = "Exit Program",
+        action_message ="Exiting Program...",
+        execute_action = quit
+    ),
 ]
 
 NEXT_ACTION_MENU = [
     MenuOptions(
-        1,
-        "Back to Main Menu",
-        "Accessing to Main Menu...\n",
-        display_main_menu,
+        index = 1,
+        option = "Back to Main Menu",
+        action_message ="Accessing to Main Menu...\n",
+        execute_action = display_main_menu,
     ),
     MenuOptions(
-        2,
-        "Back to Analysis Menu",
-        "Accessing to Analysis Menu...\n",
-        display_analysis_menu,
+        index = 2,
+        option = "Back to Analysis Menu",
+        action_message ="Accessing to Analysis Menu...\n",
+        execute_action = display_analysis_menu,
     ),
-    MenuOptions(3, "Exit Program", "Exiting Program...", quit),
+    MenuOptions(
+        index = 3,
+        option = "Exit Program",
+        action_message ="Exiting Program...",
+        execute_action = quit
+    ),
 ]
 
 # Dictionary with Question as key and list of answers as values.
