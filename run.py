@@ -15,20 +15,20 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("satisfaction-survey")
 SURVEY = SHEET.worksheet("survey_result")
 
-# Sets up a length for displaying titles
+# Sets up a length for displaying titles.
 MENU_WIDTH = 80
 
 
 def format_title(title):
     """
     Formats the given title by centering it within the menu width.
-    
-    The function calculates the padding based on the title's length 
+
+    The function calculates the padding based on the title's length
     and the menu width, and adds spaces before the title to center it.
-    
+
     Parameters:
     title (str): The title to be centered.
-        
+
     Returns:
     str: The title string centered with spaces for defined menu width.
     """
@@ -92,7 +92,7 @@ def display_main_menu():
     """
     Displays the main menu, handles user choice, and directs to next action.
     """
-    # Add extra spaces to center the title    
+    # Add extra spaces to center the title
     display_title("MAIN MENU")
     display_options(MAIN_MENU)
     choice = get_user_choice(MAIN_MENU)
@@ -148,7 +148,7 @@ def next_action():
     Displays options for next action.
     """
     print()
-    print("." * 80)
+    print("." * MENU_WIDTH)
     print("What would you like to do next? Please select an option:")
     display_options(NEXT_ACTION_MENU)
     choice = get_user_choice(NEXT_ACTION_MENU)
@@ -211,9 +211,9 @@ def summary_statistic():
 
     for question, answers in survey_data.items():
         print()
-        print("-" * 80)
+        print("-" * MENU_WIDTH)
         print(question.upper())
-        print("-" * 80)
+        print("-" * MENU_WIDTH)
         for answer, percentage in answers.items():
             print(f"   --> {answer}: {percentage} %")
 

@@ -1,5 +1,7 @@
 # Moodtracker - Keep a continuous pulse on your people.
 
+# Introduction
+
 The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at *Workhuman*, the company I work for. This tool is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
 
 This Python project is a simplified version of the *Workhuman - Moodtracker*. It provides a command-line program that serves two distinct purposes:
@@ -16,9 +18,29 @@ This Python project is a simplified version of the *Workhuman - Moodtracker*. It
 
 - As a manager, I want to generate summary statistics and analyse top satisfaction and top concerns so I can make data-driven decisions to improve employee satisfaction.
 
+## README Table Content
+
+- [Introduction](#introduction)
+- [Data Source](#data-source)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+    - [Main Menu](#main-menu)
+    - [Moodtracker Survey](#moodtracker-survey)
+    - [Analysis Program](#analysis-program)
+  - [Features left to implement](#features-left-to-implement)
+- [Manual Testing](#manual-testing)
+- [Refactoring Process](#refactoring-process-improving-efficiency-and-readability)
+- [PEP8 validation](#pep8-validation)
+- [Deployment Steps](#deployment-steps)
+- [Inspiration](#inspiration)
+- [External Libraries, Tools and Technology](#external-libraries-tools-and-technology)
+- [Resources](#resources)
+
 ## Data Source:
 This project uses data from the following Google Sheet:
 - [Google Sheet: Satisfaction Survey Data](https://docs.google.com/spreadsheets/d/1x5RsHwn2zUPl56D76aO-50ZlqlY9ddiT1pAFBvrcX14/edit?usp=sharing)
+
+![Google Worksheet ScreenShot](media/google_worksheet.png)
 
 ## Features:
 
@@ -30,7 +52,7 @@ By using a flowchart, I wanted to ensure a smooth, logical flow.
 
 ### Existing Features:
 
-**Main Menu**
+#### Main Menu
 
 - *Overview*: The Main Menu serves as a starting point for navigating the program.
 
@@ -43,7 +65,7 @@ By using a flowchart, I wanted to ensure a smooth, logical flow.
 
 ![Main Menu with options](media/main_menu.png)
 
-**Moodtracker Survey**
+#### Moodtracker Survey
 
 - *Goal*: To collect employee satisfaction levels. This tool offers a simple and engaging way for employees to provide feedback regurlarly, on different aspects of the work environment.
 
@@ -62,7 +84,7 @@ By using a flowchart, I wanted to ensure a smooth, logical flow.
 
 ![Prompt to next action with options](media/next_action.png)
 
-**Analysis Program**
+#### Analysis Program
 
 - *Goal*: To provide insightful data analysis to Human Ressources and managers, from a large panel of employee responses.
 
