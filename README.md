@@ -15,6 +15,7 @@
 - [Refactoring Process](#refactoring-process-improving-efficiency-and-readability)
 - [PEP8 validation](#pep8-validation)
 - [Deployment Steps](#deployment-steps)
+- [Forking and Cloning the Project]()
 - [External Libraries, Tools and Technology](#external-libraries-tools-and-technology)
 - [Resources](#resources)
 
@@ -235,6 +236,26 @@ The site was deployed successfully to [Heroku](https://www.heroku.com/github-stu
 9. Once App deployed, the message *Your app was successfully deployed.*
 
 The live link can be found here: [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/)
+
+### Forking and Cloning the Project
+
+Forking the repository creates a copy of this project, allowing modifications without affecting the original code. Once the repository is forked, it can be cloned to a local machine for development. Follow these steps to fork, clone, and work on the project:
+
+- **Fork the repository**
+  - Go to the repository you want to fork on [GitHub](https://github.com/).
+  - In the top-right corner of the page, click `Fork`.
+  - Name the new forked repository, then click `Create Fork`.
+  - This creates a copy of the repository under your own GitHub account.
+
+Once the repository is forked, we need to clone it to our local machine before working on it. This is done by following the steps below:
+
+- **Clone the forked repository**
+  - In the forked repository on GitHub, above the list of files, click `Code`.
+  - Copy the URL for the repository (either HTTPS or SSH).
+  - Open a terminal (or Git Bash).
+  - Type `git clone`, then paste the copied URL.
+  - Press `Enter`
+  - Navigate to the newly cloned repository directory: `cd` and the repository name.
 
 ### External Libraries, Tools and Technology
 
