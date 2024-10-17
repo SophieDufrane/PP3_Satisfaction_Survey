@@ -183,7 +183,7 @@ During development, I used [Python Tutor](https://pythontutor.com/visualize.html
 ![Screenshot of Python Tutor with block of code tested](media/python_tutor.png)
 
 - **Centered Title Formatting**
-  - *Before Refactoring*: Titles had to be manually centered by typing spaces and counting them to ensure alignment, which was time-consuming and prone to errors.
+  - *Before Refactoring*: Titles had to be manually centered by typing spaces and counting them to ensure alignment, which was time-consuming and not precise enough.
   - *After Refactoring*: A `format_title` function was added to center the title within a fixed menu width of 80 characters. The function calculates the padding based on the title's length, ensuring alignment across menus.
 
 ### PEP8 validation

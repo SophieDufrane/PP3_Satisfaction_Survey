@@ -54,10 +54,10 @@ def display_options(menu_options):
     Displays the list of menu options.
 
     Class:
-    This function uses instances of the MenuOptions class to display the menu options.
+    This function uses instances from MenuOptions class to display options.
 
     Parameters:
-    menu_options (list of MenuOptions): A list of MenuOptions instances to be displayed.
+    menu_options (list of MenuOptions): A list of MenuOptions instances.
     """
     for option in menu_options:
         print(option.display_menu_options())
@@ -66,7 +66,7 @@ def display_options(menu_options):
 def get_user_choice(options):
     """
     Gets and validates the user selection from the list of options.
-    
+
     Parameters:
     options (list): The list of available Menu options.
 
@@ -297,73 +297,74 @@ class MenuOptions:
         print(self.action_message)
         return self.execute_action()
 
+
 # Constants for menu options used throughout the program.
 MAIN_MENU = [
     MenuOptions(
-        index = 1,
-        option = "Access to Survey",
-        action_message = "Accessing Moodtracker Survey...\n",
-        execute_action = access_survey,
+        index=1,
+        option="Access to Survey",
+        action_message="Accessing Moodtracker Survey...\n",
+        execute_action=access_survey,
     ),
     MenuOptions(
-        index = 2,
-        option ="Access to Analysis Program",
-        action_message ="Accessing Analysis Program...\n",
-        execute_action = display_analysis_menu,
+        index=2,
+        option="Access to Analysis Program",
+        action_message="Accessing Analysis Program...\n",
+        execute_action=display_analysis_menu,
     ),
     MenuOptions(
-        index = 3,
-        option = "Exit Program",
-        action_message ="Exiting Program...",
-        execute_action = quit
+        index=3,
+        option="Exit Program",
+        action_message="Exiting Program...",
+        execute_action=quit,
     ),
 ]
 
 ANALYSIS_MENU = [
     MenuOptions(
-        index = 1,
-        option = "Summary Statistic",
-        action_message ="Accessing Summary Statistic...\n",
-        execute_action = summary_statistic,
+        index=1,
+        option="Summary Statistic",
+        action_message="Accessing Summary Statistic...\n",
+        execute_action=summary_statistic,
     ),
     MenuOptions(
-        index = 2,
-        option = "Top Satisfaction & Top Concerns",
-        action_message ="Accessing Top Satisfaction & Top Concerns...\n",
-        execute_action = top_analysis,
+        index=2,
+        option="Top Satisfaction & Top Concerns",
+        action_message="Accessing Top Satisfaction & Top Concerns...\n",
+        execute_action=top_analysis,
     ),
     MenuOptions(
-        index = 3,
-        option = "Back to Main Menu",
-        action_message ="Back to Main Menu...\n",
-        execute_action = display_main_menu
+        index=3,
+        option="Back to Main Menu",
+        action_message="Back to Main Menu...\n",
+        execute_action=display_main_menu,
     ),
     MenuOptions(
-        index = 4,
-        option = "Exit Program",
-        action_message ="Exiting Program...",
-        execute_action = quit
+        index=4,
+        option="Exit Program",
+        action_message="Exiting Program...",
+        execute_action=quit,
     ),
 ]
 
 NEXT_ACTION_MENU = [
     MenuOptions(
-        index = 1,
-        option = "Back to Main Menu",
-        action_message ="Accessing to Main Menu...\n",
-        execute_action = display_main_menu,
+        index=1,
+        option="Back to Main Menu",
+        action_message="Accessing to Main Menu...\n",
+        execute_action=display_main_menu,
     ),
     MenuOptions(
-        index = 2,
-        option = "Back to Analysis Menu",
-        action_message ="Accessing to Analysis Menu...\n",
-        execute_action = display_analysis_menu,
+        index=2,
+        option="Back to Analysis Menu",
+        action_message="Accessing to Analysis Menu...\n",
+        execute_action=display_analysis_menu,
     ),
     MenuOptions(
-        index = 3,
-        option = "Exit Program",
-        action_message ="Exiting Program...",
-        execute_action = quit
+        index=3,
+        option="Exit Program",
+        action_message="Exiting Program...",
+        execute_action=quit,
     ),
 ]
 
