@@ -1,8 +1,28 @@
 # Moodtracker - Keep a continuous pulse on your people.
 
-# Introduction
+## Table of Contents
 
-The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at *Workhuman*, the company I work for. This tool is designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
+- [Introduction](#introduction)
+- [User Story](#user-story)
+- [Data Source](#data-source)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+    - [Main Menu](#main-menu)
+    - [Moodtracker Survey](#moodtracker-survey)
+    - [Analysis Program](#analysis-program)
+  - [Features left to implement](#features-left-to-implement)
+- [Manual Testing](#manual-testing)
+- [Refactoring Process](#refactoring-process-improving-efficiency-and-readability)
+- [PEP8 validation](#pep8-validation)
+- [Deployment Steps](#deployment-steps)
+- [External Libraries, Tools and Technology](#external-libraries-tools-and-technology)
+- [Resources](#resources)
+
+## Introduction
+
+The [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/) project was inspired by a tool already in use at [Workhuman](https://www.workhuman.com/about-us/), a global software company that builds technology that enhances the employee experience and drives company cultures forward. *Moodtracker* is a survey tool designed to gauge employee satisfaction and provide valuable insights through survey data analysis.
+
+## User Story
 
 This Python project is a simplified version of the *Workhuman - Moodtracker*. It provides a command-line program that serves two distinct purposes:
 - To allow employees to easily participate in a satisfaction survey.
@@ -18,26 +38,10 @@ This Python project is a simplified version of the *Workhuman - Moodtracker*. It
 
 - As a manager, I want to generate summary statistics and analyse top satisfaction and top concerns so I can make data-driven decisions to improve employee satisfaction.
 
-## README Table Content
-
-- [Introduction](#introduction)
-- [Data Source](#data-source)
-- [Features](#features)
-  - [Existing Features](#existing-features)
-    - [Main Menu](#main-menu)
-    - [Moodtracker Survey](#moodtracker-survey)
-    - [Analysis Program](#analysis-program)
-  - [Features left to implement](#features-left-to-implement)
-- [Manual Testing](#manual-testing)
-- [Refactoring Process](#refactoring-process-improving-efficiency-and-readability)
-- [PEP8 validation](#pep8-validation)
-- [Deployment Steps](#deployment-steps)
-- [Inspiration](#inspiration)
-- [External Libraries, Tools and Technology](#external-libraries-tools-and-technology)
-- [Resources](#resources)
+- Additionally, the storage of data in a Google worksheet makes it easier to generate reports and presentations, allowing both HR and managers to easily share insights with leadership team.
 
 ## Data Source:
-This project uses data from the following Google Sheet:
+This project uses and stores data in real-time in the following Google Sheet:
 - [Google Sheet: Satisfaction Survey Data](https://docs.google.com/spreadsheets/d/1x5RsHwn2zUPl56D76aO-50ZlqlY9ddiT1pAFBvrcX14/edit?usp=sharing)
 
 ![Google Worksheet ScreenShot](media/google_worksheet.png)
@@ -175,7 +179,11 @@ During development, I used [Python Tutor](https://pythontutor.com/visualize.html
   - *Before Refactoring*: The `MenuOptions` class was initially used only to display menu options with an index and a description. Each function with a menu had its own block of code to display the options and handle user choice.
   - *After Refactoring*: I moved the menu options directly into their respective dictionaries and added a new method to the MenuOptions class to display a message and execute the appropriate function. I tested the logic using [Python Tutor](https://pythontutor.com/visualize.html#mode=edit) to ensure everything worked as expected, and then applied the refactored logic to all menus across the program. With this in place, there was no longer a need to use the `handle_choice` function.
 
-![Screenshot of Python Tutor with block of code tested](media/python_tutor.png)  
+![Screenshot of Python Tutor with block of code tested](media/python_tutor.png)
+
+- **Centered Title Formatting**
+  - *Before Refactoring*: Titles had to be manually centered by typing spaces and counting them to ensure alignment, which was time-consuming and prone to errors.
+  - *After Refactoring*: A `format_title` function was added to center the title within a fixed menu width of 80 characters. The function calculates the padding based on the title's length, ensuring alignment across menus.
 
 ### PEP8 validation
 
@@ -227,10 +235,6 @@ The site was deployed successfully to [Heroku](https://www.heroku.com/github-stu
 9. Once App deployed, the message *Your app was successfully deployed.*
 
 The live link can be found here: [Moodtracker](https://satisfaction-survey-sd-a479e4d4f1cf.herokuapp.com/)
-
-### Inspiration
-
-The idea for this project was inspired by [Workhuman](https://www.workhuman.com/), a company that offers solutions to improve employee engagement and feedback mechanisms. 
 
 ### External Libraries, Tools and Technology
 
